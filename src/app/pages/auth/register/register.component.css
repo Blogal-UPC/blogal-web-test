@@ -1,0 +1,38 @@
+.register-link {
+    text-align: center;
+    margin-top: 5%;
+    font-size: 0.9rem;
+    color: #555;
+
+}
+  
+.register-link a {
+    text-decoration: none;
+    color: #007bff;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+  
+.register-link a:hover {
+    color: #0056b3;
+    text-decoration: underline;
+}
+.imagen{
+    background-color: #6FA5F6;
+    margin: 0 0 2px;
+
+}
+.imagen img{
+    border-radius: 5%;
+
+}
+.imagen div{
+    margin: 20px 20px 20px 20px;
+}
+.logo-container{
+    margin: 50px 0 ;
+    display: inline-block;
+    background-color: #6FA5F6;
+    padding: 1% 5%;
+    border-radius: 5%;
+}
