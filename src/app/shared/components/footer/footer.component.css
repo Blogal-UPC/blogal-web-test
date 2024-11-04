@@ -1,0 +1,16 @@
+.footer-bar{
+    color:black;
+    padding: 20px;
+    background-color: #6FA5F6;
+}
+.footer-bar li{
+    display: inline-block;
+}
+.footer-text{
+    text-align: right;
+    border-radius: 10px;
+    background-color: lightgray;
+    
+    padding: 1%;
+    margin: 0 0 0 80%; 
+}
