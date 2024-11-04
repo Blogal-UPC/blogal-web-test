@@ -1,16 +1,24 @@
-.footer-bar{
-    color:black;
-    padding: 20px;
-    background-color: #6FA5F6;
-}
-.footer-bar li{
-    display: inline-block;
-}
-.footer-text{
-    text-align: right;
-    border-radius: 10px;
-    background-color: lightgray;
-    
-    padding: 1%;
-    margin: 0 0 0 80%; 
-}
+footer {
+    background-color: #6FA5F6; 
+    padding: 1rem 0;
+    position: fixed; /* Fijo al final de la pantalla */
+    width: 100%;
+    bottom: 0;
+  }
+  
+  footer a {
+    color: #000000; 
+    text-decoration: none;
+    font-size: 1.2rem;
+    transition: color 0.3s ease; /* Transición suave en color */
+  }
+  
+  footer p {
+    margin: 0;
+    color: #222222; 
+  }
+  
+  footer i {
+    font-size: 1.5rem;
+  }
+  
