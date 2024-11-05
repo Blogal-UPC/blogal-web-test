@@ -55,7 +55,7 @@ export class LoginComponent {
         if (user.role === 'WRITER') {
           this.router.navigate(['/writer/homepage']);
         } else if (user.role === 'READER') {
-          this.router.navigate(['/reader/read']);
+          this.router.navigate(['/reader/homepage']);
         }
       } else {
         this.showSnackBar('Correo o contraseña incorrectos.');
