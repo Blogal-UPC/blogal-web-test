@@ -1,0 +1,26 @@
+<div class="article-card-container">
+
+    @for(article of articles; track article.id){
+      <mat-card  class="article-card">
+        <mat-card-header>
+          <mat-card-title>{{ article.title }}</mat-card-title>
+          <mat-card-subtitle>{{ article.category.name }}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <p class="article-summary">{{ article.summary }}</p>
+          <p class="article-price">Autor: {{ article.author }}</p>
+          <p class="article-publication">Publicado en: {{ article.publicationDate | date }}</p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-button color="primary" [routerLink]="['/reader/catalog/article/details', article.id]">Ver Detalles</button>
+          <button mat-button color="accent">Guardar</button>
+        </mat-card-actions>
+      </mat-card>
+    }@empty {
+      <p>No hay libros disponibles</p>
+    }
+  
+    <br><br><br><br><br><br>
+</div>
+  
+  

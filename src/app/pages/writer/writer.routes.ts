@@ -4,12 +4,14 @@ import { ArticleListComponent } from './article-list/article-list.component'
 import { ArticleFormComponent } from './article-form/article-form.component'
 import { CategoryListComponent } from './category-list/category-list.component'
 import { CategoryFormComponent } from './category-form/category-form.component'
+import { HomepageComponent } from './homepage/homepage.component'
 
 export const writerRoutes: Routes=[
     {
         path:'',
         component:WriterLayoutComponent,
         children:[
+            {path:'homepage',component:HomepageComponent},
             {path:'articles',component:ArticleListComponent},
             {path:'articles/add', component:ArticleFormComponent},
             {path:'articles/edit/:id', component:ArticleFormComponent},

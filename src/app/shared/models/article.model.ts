@@ -3,9 +3,11 @@ import {Category} from "./category.model";
 import {Tag} from "./tag.model";
 export interface Article{
     id: number;
+    id_author:number;
+    author:string; 
     title:string;
-    author: User;
     category: Category;
     tags: Tag;
     publicationDate: Date;
+    summary:string;
 }

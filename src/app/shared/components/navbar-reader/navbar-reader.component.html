@@ -1,1 +1,39 @@
-<p>navbar-reader works!</p>
+<nav class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+      <!-- Logo -->
+      <a class="navbar-brand d-flex align-items-center" routerLink="/reader/homepage" routerLinkActive="active">
+        <img src="assets/logo.png" alt="Logo" width="60" height="60" class="d-inline-block align-text-top">
+        <span class="ms-2">Blogal</span>
+      </a>
+  
+      <!-- Navbar Toggler (visible on smaller screens) -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon "></span>
+      </button>
+  
+      <!-- Navbar Links -->
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/reader/catalog" routerLinkActive="active">Buscar</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/reader/homepage" routerLinkActive="active">Seguidos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/reader/homepage" routerLinkActive="Ingresos">Recomendaciones</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/reader/homepage" routerLinkActive="active">Notificaciones</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/reader/homepage" routerLinkActive="active">Configuración</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" color="warn" (click)="logout()">Logout</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  

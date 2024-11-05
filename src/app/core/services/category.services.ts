@@ -1,0 +1,32 @@
+import { Injectable } from '@angular/core';
+import { Category } from '../../shared/models/category.model';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class CategoryService {
+  private categories: Category[] = [
+    { id: 1, name: 'Biología', description: 'Artículos de Biología' },
+    { id: 2, name: 'Ecología', description: 'Libros sobre Ecología' },
+    { id: 3, name: 'Astronomía', description: 'Libros de Astronomía' },
+  ];
+
+  getCategories(): Category[] {
+    return this.categories;
+  }
+
+  getCategoryById(id: number): Category | null {
+    return this.categories.find(c => c.id === id) || null;
+  }
+
+  addCategory(category: Category): Category {
+    category.id = this.categories.length + 1;
+    this.categories.push(category);
+    return category;
+  }
+
+
+  deleteCategory(id: number): void {
+    this.categories = this.categories.filter(c => c.id !== id);
+  }
+}
