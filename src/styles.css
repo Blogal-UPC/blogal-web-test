@@ -150,7 +150,6 @@ header{
     border-style: solid;
     border-width: 1px;
     border-color: black;
-    box-shadow: 2px 2px 4px black inset;
 }
 .cta-content h2{
     font-size: 36px;
@@ -161,7 +160,6 @@ header{
     border-style: solid;
     border-width: 1px;
     border-color: black;
-    box-shadow: 2px 2px 4px black inset;
 }
 .cta-content a{
     margin: 20px 0;
@@ -175,7 +173,6 @@ header{
     border-style: solid;
     border-width: 1px;
     border-color: black;
-    box-shadow: 2px 2px 4px black inset;
 }
 .cta-button{
     background-color: #A4BFE7 ;
