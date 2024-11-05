@@ -19,4 +19,7 @@ export class NavbarWriterComponent {
     this.authService.logout();
     this.router.navigate(['/auth/login']);
   }
+  goToAddArticle(): void {
+    this.router.navigate(['writer/articles/add']);
+  }
 }

@@ -53,7 +53,7 @@ export class LoginComponent {
 
 
         if (user.role === 'WRITER') {
-          this.router.navigate(['/writer/articles']);
+          this.router.navigate(['/writer/homepage']);
         } else if (user.role === 'READER') {
           this.router.navigate(['/reader/read']);
         }
