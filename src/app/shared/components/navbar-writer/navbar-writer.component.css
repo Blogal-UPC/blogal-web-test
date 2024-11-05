@@ -1,0 +1,21 @@
+.navbar{
+    background-color: #6FA5F6;
+    color: black;
+    padding: 10px 20px;
+}
+.navbar-nav li{
+    margin: 10px;
+    
+}
+.navbar-nav a{
+    text-decoration:none;
+    color: black;
+    transition: color 0.3s;
+    padding: 10px ;
+    border-radius: 5%;
+    display: inline-block;
+    background-color: #A4BFE7 ;
+}
+.navbar-nav a:hover{
+    color: #D9D9D9;
+}

@@ -4,7 +4,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
+import { AuthService } from '../../../core/services/auth.service';
+import { LoginCredentials } from '../../../shared/models/login-credentials.model';
 
 
 @Component({
@@ -19,6 +21,8 @@ export class LoginComponent {
   loginForm: FormGroup;
   private fb = inject(FormBuilder);
   private snackBar = inject(MatSnackBar);
+  private router = inject(Router);
+  private authService = inject(AuthService)
 
   constructor(){
     this.loginForm=this.fb.group({
@@ -40,9 +44,22 @@ export class LoginComponent {
 
   onSubmit(){
     if(this.loginForm.valid){
-      const credentials = this.loginForm.value;
-      console.log('Credenciales:', credentials);
-      this.showSnackBar('Inicio de sesión exitoso');
+      const credentials: LoginCredentials = this.loginForm.value;
+
+      const user = this.authService.login(credentials);
+
+      if (user) {
+        this.showSnackBar(`Bienvenido, ${user.firstName}`);
+
+
+        if (user.role === 'WRITER') {
+          this.router.navigate(['/writer/articles']);
+        } else if (user.role === 'READER') {
+          this.router.navigate(['/reader/read']);
+        }
+      } else {
+        this.showSnackBar('Correo o contraseña incorrectos.');
+      }
     }
   }
 }
