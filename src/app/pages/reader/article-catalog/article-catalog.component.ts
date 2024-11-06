@@ -4,11 +4,13 @@ import { FormsModule } from '@angular/forms';
 import { ArticleCardComponent } from '../../../shared/components/article-card/article-card.component';
 import { ArticleService } from '../../../core/services/article.services';
 import { Article } from '../../../shared/models/article.model';
+import {MatCard, MatCardContent} from "@angular/material/card";
+import {MatDivider} from '@angular/material/divider';
 
 @Component({
   selector: 'app-article-catalog',
   standalone: true,
-  imports: [CommonModule, FormsModule, ArticleCardComponent],
+  imports: [CommonModule, FormsModule, ArticleCardComponent, MatCard, MatCardContent, MatDivider],
   templateUrl: './article-catalog.component.html',
   styleUrl: './article-catalog.component.css'
 })
