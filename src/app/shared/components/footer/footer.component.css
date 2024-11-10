@@ -1,8 +1,8 @@
 footer {
     background-color: #6FA5F6; 
     padding: 1rem 0;
-    position: fixed; /* Fijo al final de la pantalla */
     width: 100%;
+    position: fixed;
     bottom: 0;
   }
   
