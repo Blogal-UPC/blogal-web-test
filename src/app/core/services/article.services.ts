@@ -8,7 +8,7 @@ export class ArticleService {
   private article: Article[] = [
     {
       id: 1,
-      id_author:1,
+      author_id:1,
       author:'John Doe',
       title: 'Historia de las tortugas',
       category: {
@@ -16,17 +16,13 @@ export class ArticleService {
         name:'Biología',
         description: 'Artículos de Biología',
       },
-      tags:{
-        id:1,
-        name:'Tortugas',
-        description:'',
-      },
+      tags_id:[2,3,5,6,7],
       publicationDate: new Date('2018-10-01'),
       summary:'Historia de la evolución de las tortugas',
     },
     {
         id: 2,
-        id_author: 2,
+        author_id: 2,
         author: 'Jane Smith',
         title: 'Las maravillas del océano',
         category: {
@@ -34,17 +30,13 @@ export class ArticleService {
           name: 'Ecología',
           description: 'Libros sobre Ecología',
         },
-        tags: {
-          id: 2,
-          name: 'Océano',
-          description: 'Artículos relacionados con el océano y la vida marina',
-        },
+        tags_id: [3],
         publicationDate: new Date('2019-05-15'),
         summary: 'Explora la biodiversidad y secretos del océano',
       },
       {
         id: 3,
-        id_author: 1,
+        author_id: 1,
         author: 'John Doe',
         title: 'Introducción a la astronomía',
         category: {
@@ -52,11 +44,7 @@ export class ArticleService {
           name: 'Astronomía',
           description: 'Usa esta categoría para temas relacionados con el espacio y astronomía',
         },
-        tags: {
-          id: 3,
-          name: 'Estrellas',
-          description: 'Artículos relacionados con estrellas y constelaciones',
-        },
+        tags_id: [4],
         publicationDate: new Date('2020-07-21'),
         summary: 'Conoce los principios básicos de la astronomía',
       },

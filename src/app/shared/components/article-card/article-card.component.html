@@ -11,7 +11,7 @@
           <p class="article-publication">Publicado en: {{ article.publicationDate | date }}</p>
         </mat-card-content>
         <mat-card-actions>
-          <button mat-flat-button color="primary" [routerLink]="['/reader/catalog/article/details', article.id]">Ver detalles</button>
+          <button mat-flat-button color="primary" [routerLink]="['../catalog/article/details', article.id]">Ver detalles</button>
           <button mat-button color="accent">Guardar</button>
         </mat-card-actions>
       </mat-card>

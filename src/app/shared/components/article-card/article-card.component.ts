@@ -1,10 +1,11 @@
-import { Component, Input } from '@angular/core';
+import { Component, inject, Input } from '@angular/core';
 import { Article } from '../../models/article.model';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { RouterLink } from '@angular/router';
 import {MatButton} from '@angular/material/button';
 import {MatDivider} from '@angular/material/divider';
+
 
 @Component({
   selector: 'app-article-card',
@@ -14,7 +15,7 @@ import {MatDivider} from '@angular/material/divider';
   styleUrl: './article-card.component.css'
 })
 export class ArticleCardComponent {
-  @Input() articles: Article[] = [];
+  @Input() articles: Article[] = [];  
 }
 
 

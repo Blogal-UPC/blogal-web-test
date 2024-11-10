@@ -1,11 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { ArticleCardComponent } from '../../../shared/components/article-card/article-card.component';
+import { ArticleCardComponent } from '../article-card/article-card.component';
 import { ArticleService } from '../../../core/services/article.services';
-import { Article } from '../../../shared/models/article.model';
+import { Article } from '../../models/article.model';
 import {CategoryService} from '../../../core/services/category.services';
-import {Category} from '../../../shared/models/category.model';
+import {Category} from '../../models/category.model';
 import {MatCard, MatCardContent} from "@angular/material/card";
 import {MatDivider} from '@angular/material/divider';
 import {MatButtonToggle, MatButtonToggleGroup} from '@angular/material/button-toggle';
