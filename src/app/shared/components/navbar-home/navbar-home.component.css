@@ -17,5 +17,11 @@
     background-color: #A4BFE7 ;
 }
 .navbar-nav a:hover{
-    color: #D9D9D9;
+    color: #6FA5F6;
+}
+.signin-login-button a{
+    background-color: #ffffff;
+}
+.signin-login-button a:hover{
+    color: #A4BFE7;
 }
