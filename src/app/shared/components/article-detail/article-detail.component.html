@@ -1,0 +1,26 @@
+@if(article){
+    <div class="detail">
+      <h2>{{ article.title }}</h2>
+      <p><strong>Categoría:</strong> {{ article.category.name }}</p>
+      <p><strong>Resumen:</strong> {{ article.summary }}</p>
+
+      <p><strong>Etiquetas:</strong> 
+        @for(tag of tags_list; track tags_list){
+            #{{ tag.name }} 
+        }
+        
+        </p>
+      <p>
+        <strong>Fecha de Publicación:</strong> {{ article.publicationDate | date }}
+      </p>
+  
+      <button mat-raised-button color="primary" (click)="goBack()">
+        Regresar al Catálogo
+      </button>
+    </div>
+  
+    }@else {
+    <div class="detail">
+      <p>Seleccione un libro para ver los detalles</p>
+    </div>
+    }

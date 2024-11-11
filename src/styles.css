@@ -5,50 +5,45 @@
 /*    src: url("assets/fonts/roboto-regular-webfont.woff") format("woff");*/
 /*}*/
 
-h1 {
-    font-family: "Roboto", sans-serif;
-    font-weight: 400;
-    font-size: 45pt;
-    letter-spacing: 0;
-    line-height: 52pt;
+/*h1 {*/
+/*    font-weight: 400;*/
+/*    font-size: 45pt;*/
+/*    letter-spacing: 0;*/
+/*    line-height: 52pt;*/
 
-}
+/*}*/
 
-h2 {
-    font-family: "Roboto", sans-serif;
-    font-weight: 400;
-    font-size: 28pt;
-    letter-spacing: 0;
-    line-height: 36pt;
-}
+/*h2 {*/
+/*    font-weight: 400;*/
+/*    font-size: 28pt;*/
+/*    letter-spacing: 0;*/
+/*    line-height: 36pt;*/
+/*}*/
 
-h3 {
-    font-family: "Roboto", sans-serif;
-    font-weight: 500;
-    font-size: 16pt;
-    letter-spacing: 0.15pt;
-    line-height: 24pt;
-}
+/*h3 {*/
+/*    font-weight: 500;*/
+/*    font-size: 16pt;*/
+/*    letter-spacing: 0.15pt;*/
+/*    line-height: 24pt;*/
+/*}*/
 
-p {
-    font-family: "Roboto", sans-serif;
-    font-weight: 400;
-    font-size: 14pt;
-    letter-spacing: 0.25pt;
-    line-height: 20pt;
-}
+/*p {*/
+/*    font-weight: 400;*/
+/*    font-size: 14pt;*/
+/*    letter-spacing: 0.25pt;*/
+/*    line-height: 20pt;*/
+/*}*/
 
-small, span.label {
-    font-family: "Roboto", sans-serif;
-    font-weight: 500;
-    font-size: 12pt;
-    letter-spacing: 0.5pt;
-    line-height: 16pt;
-}
+/*small, span.label {*/
+/*    font-weight: 500;*/
+/*    font-size: 12pt;*/
+/*    letter-spacing: 0.5pt;*/
+/*    line-height: 16pt;*/
+/*}*/
 
 body{
     background-color: #D9D9D9;
-    font-family: "Roboto", sans-serif;
+    /*font-family: "Roboto", sans-serif;*/
     margin: 0;
     padding: 0;
 }

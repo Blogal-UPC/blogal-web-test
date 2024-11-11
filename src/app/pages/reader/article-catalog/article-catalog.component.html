@@ -1,9 +1,0 @@
-<div class="article-catalog-container">
-    <h2>Catálogo de Artículos</h2>
-  
-    <div class="search-box">
-      <input type="text" [(ngModel)]="searchQuery" (input)="filterArticles()" placeholder="Buscar por título o categoría" />
-    </div>
-  
-    <app-article-card [articles]="filteredArticles"></app-article-card>
-  </div>
