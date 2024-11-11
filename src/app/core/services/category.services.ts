@@ -9,6 +9,10 @@ export class CategoryService {
     { id: 1, name: 'Biología', description: 'Artículos de Biología' },
     { id: 2, name: 'Ecología', description: 'Libros sobre Ecología' },
     { id: 3, name: 'Astronomía', description: 'Libros de Astronomía' },
+    { id: 4, name: 'Meteorologia', description: 'Libros de Meteorologia' },
+    { id: 5, name: 'Botánica', description: 'Libros de Botánica' },
+    { id: 6, name: 'Zoología', description: 'Libros de Zoología' },
+
   ];
 
   getCategories(): Category[] {

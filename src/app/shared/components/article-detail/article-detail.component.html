@@ -1,12 +1,12 @@
 @if(article){
-    <div class="book-detail">
+    <div class="detail">
       <h2>{{ article.title }}</h2>
       <p><strong>Categoría:</strong> {{ article.category.name }}</p>
       <p><strong>Resumen:</strong> {{ article.summary }}</p>
 
       <p><strong>Etiquetas:</strong> 
         @for(tag of tags_list; track tags_list){
-            {{ tag.name }}
+            #{{ tag.name }} 
         }
         
         </p>
@@ -20,7 +20,7 @@
     </div>
   
     }@else {
-    <div class="book-detail">
+    <div class="detail">
       <p>Seleccione un libro para ver los detalles</p>
     </div>
     }

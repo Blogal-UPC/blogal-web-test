@@ -1,9 +1,20 @@
 <div class="article-catalog-container">
   <h2>Catálogo de Artículos</h2>
+
   <div class="search-box">
-    <input type="text" [(ngModel)]="searchQuery" (input)="filterArticles()"
-           placeholder="Buscar por título o categoría"/>
+    <input type="text" 
+    matInput 
+    [formControl]="myControl" 
+    [matAutocomplete]="auto"
+    [(ngModel)]="searchQuery"
+    (input)="filterArticles()"
+    placeholder="Buscar por título, categoría, o autor"/>
   </div>
+  <mat-autocomplete #auto="matAutocomplete" (optionSelected)="filterArticles()">
+    <mat-option *ngFor="let option of (filteredOptions | async)" [value]="option">
+      {{ option }}
+    </mat-option>
+  </mat-autocomplete>
   <div style="display: flex; justify-content: center;">
     <mat-button-toggle-group
       name="categorias"
