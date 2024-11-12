@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Component, inject } from '@angular/core';
+import { Router, RouterLink } from '@angular/router';
+import { LoginCredentials } from '../../models/login-credentials.model';
+import { AuthService } from '../../../core/services/auth.service';
 
 @Component({
   selector: 'app-navbar-home',
@@ -10,4 +12,19 @@ import { RouterLink } from '@angular/router';
 })
 export class NavbarHomeComponent {
 
+  private authService = inject(AuthService);
+  private router = inject(Router);
+  
+
+  onSubmitReader(){
+    const credentials: LoginCredentials = {email: 'reader@example.com',password: 'password123'};
+    const user = this.authService.login(credentials);
+    this.router.navigate(['/reader/homepage']);
+  }
+  onSubmitWriter(){
+    const credentials: LoginCredentials = {email: 'writer@example.com',password: 'password123'};
+    const user = this.authService.login(credentials);
+    this.router.navigate(['/writer/homepage']);
+  }
 }
+
