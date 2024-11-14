@@ -1,7 +1,7 @@
 <div class="container">
     <br>
-    <h2 class="login-header">Bienvenido</h2>
-    <p class="login-subtext">Por favor, registrate para continuar</p>
+    <h2 class="login-header">Para comenzar en Blogal debes Registrarte</h2>
+    <p class="login-subtext">Por favor, ingresa tus datos para continuar</p>
     <div class="row" style="height: 100vh;">
       <!-- Columna para el formulario -->
         <div class="col-md-6">
@@ -12,6 +12,18 @@
             </div>
             <div class="login-container">
                 <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="login-form">
+                    <div class="form-group">
+                        <mat-form-field appearance="outline" class="form-input">
+                            <mat-label>Rol</mat-label>
+                            <mat-select formControlName="role">
+                                <mat-option value="READER">Lector</mat-option>
+                                <mat-option value="WRITER">Escritor</mat-option>
+                            </mat-select>
+                            @if(controlHasError('role','required')){
+                                <mat-error>Este campo es obligatorio</mat-error>
+                            }
+                        </mat-form-field>
+                    </div>
                     <div class="form-group">
                         <mat-form-field appearance="outline" class="form-input">
                             <mat-label>Nombre</mat-label>
@@ -45,7 +57,7 @@
                     <div class="form-group mt-3">
                         <mat-form-field appearance="outline" class="form-input">
                             <mat-label>Contraseña</mat-label>
-                            <input matInput formControlName="password" placeholder="Introduce tu contraseña">
+                            <input matInput type="password" formControlName="password" placeholder="Introduce tu contraseña">
                             @if(controlHasError('password', 'required')) {
                                 <mat-error>Este campo es obligatorio</mat-error>
                             }
@@ -59,13 +71,15 @@
             </div>
         </div>
         
-        <div class="col-md-6 imagen">
-            <div class= "align-items-center">
-                <img src="assets/reg_1.jpg" alt="Imagen de Registro" class="img-fluid d-none d-md-block"/>
+        <div class="col-md-6">
+            <br>
+            <div class= "  imagen align-items-center">
+                <img src="assets/register_1.jpg" alt="Imagen de Registro" class="img-fluid d-none d-md-block"/>
             </div>
         </div>
+        <p class="register-link">¿Ya tienes una cuenta? 
+            <a routerLink="/auth/login">Inicia sesión aquí</a>
+        </p>
     </div>
-    <p class="register-link">¿Ya tienes una cuenta? <a routerLink="/auth/login">Inicia sesión aquí</a>
-    </p>
     <br><br><br><br><br>
 </div>

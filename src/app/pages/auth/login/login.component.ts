@@ -38,7 +38,7 @@ export class LoginComponent {
     this.snackBar.open(message,'Cerrar',{
       duration:3000,
       horizontalPosition: 'center',
-      verticalPosition: 'bottom',
+      verticalPosition: 'top',
     });
   } 
 
