@@ -110,7 +110,7 @@ export class AuthService {
   ];
   constructor() { }
   private _currentUser:User | null=null;
-  get currentUser():User|null{
+  getcurrentUser():User|null{
     return this._currentUser;
   }
   register(newUser:User):User|null{
