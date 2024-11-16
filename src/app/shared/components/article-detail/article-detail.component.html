@@ -13,6 +13,9 @@
       <p>
         <strong>Fecha de Publicación:</strong> {{ article.publicationDate | date }}
       </p>
+      <p>
+        {{getContent(article.id)}}
+      </p>
   
       <button mat-raised-button color="primary" (click)="goBack()">
         Regresar al Catálogo

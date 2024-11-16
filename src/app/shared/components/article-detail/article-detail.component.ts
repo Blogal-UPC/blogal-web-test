@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ArticleService } from '../../../core/services/article.services';
 import { Tag } from '../../models/tag.model';
 import { TagService } from '../../../core/services/tag.services';
+import { ControlEvent } from '@angular/forms';
 
 
 @Component({
@@ -38,7 +39,13 @@ export class ArticleDetailComponent {
       });
     }
   }
-
+  getContent(id:number){
+    const content=this.articleService.getArticleDetailById(id)
+    if(content){
+      return content.content;
+    }
+    else{ return 'No hay contenido'};
+  }
   goBack(): void {
     this.location.back();
   }
