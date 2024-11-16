@@ -18,17 +18,15 @@ export const writerRoutes: Routes=[
             {path:'homepage',component:HomepageComponent},
             {path:'catalog',component:ArticleCatalogComponent},
             {path:'catalog/article/details/:id', component:ArticleDetailComponent},
-            
+
             {path:'articles/add', component:ArticleFormComponent},
             {path:'articles/edit/:id', component:ArticleFormComponent},
-            
+
             {path:'categories', component:CategoryListComponent},
             {path:'categproes/add', component:CategoryFormComponent},
             {path:'categories/edit/:id', component:CategoryFormComponent},
 
             {path:'saved',component:SaveCatalogComponent},
-
-            
         ]
     }
 ]
