@@ -42,20 +42,12 @@ export class SaveCatalogComponent {
   articles: Article[] = [];
   filteredArticles: Article[] = [];
   searchQuery: string = '';
-  categories: Category[] = [];
-  filteredArticlesByTag: Article[] = [];
-  filteredTags: Tag[]=[];
-  tags: Tag[]=[];
 
 
   private articleService = inject(ArticleService);
   private articleSaveService = inject(ArticleSaveService);
   private authService=inject(AuthService);
   private snackBar=inject(MatSnackBar);
-
-  myControl=new FormControl('');
-  options:string[]=[];
-  filteredOptions: Observable<string[]> = new Observable<[]>;
 
 
   ngOnInit(): void {
