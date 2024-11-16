@@ -1,18 +1,25 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterLink } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-followed-list',
   standalone: true,
-  imports: [CommonModule, RouterLink],
+  imports: [CommonModule],
   templateUrl: './followed-list.component.html',
   styleUrls: ['./followed-list.component.css']
 })
 export class FollowedListComponent {
   followedWriters = [
-    { name: 'John Doe', publicationsUrl: '/reader/catalog' },
-    { name: 'Juan Solis', publicationsUrl: '/reader/catalog' },
+    { name: 'John Doe' },
+    { name: 'Juan Solis' },
     // Añadir más escritores según sea necesario
   ];
+
+  constructor(private router: Router) {}
+
+  viewPublications(writerName: string) {
+    const formattedName = `:${writerName}`;
+    this.router.navigate(['/reader/catalog'], { queryParams: { searchQuery: formattedName } });
+  }
 }
