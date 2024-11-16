@@ -1,24 +1,44 @@
 @if(article){
-    <div class="detail">
-      <h2>{{ article.title }}</h2>
-      <p><strong>Categoría:</strong> {{ article.category.name }}</p>
-      <p><strong>Resumen:</strong> {{ article.summary }}</p>
-
-      <p><strong>Etiquetas:</strong> 
-        @for(tag of tags_list; track tags_list){
-            #{{ tag.name }} 
-        }
-        
-        </p>
-      <p>
-        <strong>Fecha de Publicación:</strong> {{ article.publicationDate | date }}
-      </p>
-  
-      <button mat-raised-button color="primary" (click)="goBack()">
-        Regresar al Catálogo
+    <mat-toolbar style="margin-bottom: 10px">
+      <button mat-icon-button (click)="goBack()" aria-label="Botón para regresar a la página anterior">
+        <mat-icon>arrow_back</mat-icon>
       </button>
-    </div>
-  
+      <span>Detalles del artículo</span>
+      <span class="example-spacer"></span>
+      <button mat-icon-button (click)="addArticleSave(article)" aria-label="Botón de corazon para guardar artículo">
+        <mat-icon>favorite</mat-icon>
+      </button>
+<!--      <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">-->
+<!--        <mat-icon>share</mat-icon>-->
+<!--      </button>-->
+    </mat-toolbar>
+    <mat-card appearance="outlined">
+      <mat-card-content>
+        <mat-card appearance="outlined" class="info-article" style="margin-bottom: 10px;">
+          <mat-card-content>
+            <div class="detail" style="margin: auto">
+              <h2 class="mat-title-large">{{ article.title }}</h2>
+              <p class="mat-body-strong"><strong>Categoría:</strong> {{ article.category.name }}</p>
+              <p><strong>Resumen:</strong> {{ article.summary }}</p>
+
+              <p><strong>Etiquetas:</strong>
+                @for(tag of tags_list; track tags_list){
+                  #{{ tag.name }}
+                }
+              </p>
+              <p>
+                <strong>Fecha de Publicación:</strong> {{ article.publicationDate | date }}
+              </p>
+<!--              <button mat-flat-button (click)="goBack()">-->
+<!--                Regresar al Catálogo-->
+<!--              </button>-->
+            </div>
+          </mat-card-content>
+        </mat-card>
+        Hola
+      </mat-card-content>
+    </mat-card>
+
     }@else {
     <div class="detail">
       <p>Seleccione un libro para ver los detalles</p>
