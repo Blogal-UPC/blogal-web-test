@@ -1,1 +1,9 @@
-<p>followed-list works!</p>
+<div>
+    <h2>Escritores Seguidos</h2>
+    <ul>
+      <li *ngFor="let writer of followedWriters">
+        <p>{{ writer.name }}</p>
+        <a routerLink="{{writer.publicationsUrl}}">Ver Publicaciones</a>
+      </li>
+    </ul>
+  </div>
