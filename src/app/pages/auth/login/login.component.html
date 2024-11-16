@@ -27,7 +27,7 @@
                     <div class="form-group mt-3">
                         <mat-form-field appearance="outline" class="form-input">
                             <mat-label>Contraseña</mat-label>
-                            <input matInput formControlName="password" placeholder="Introduce tu contraseña">
+                            <input matInput type="password" formControlName="password" placeholder="Introduce tu contraseña">
                             @if(controlHasError('password', 'required')) {
                                 <mat-error>Este campo es obligatorio</mat-error>
                             }

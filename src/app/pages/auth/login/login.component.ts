@@ -38,7 +38,7 @@ export class LoginComponent {
     this.snackBar.open(message,'Cerrar',{
       duration:3000,
       horizontalPosition: 'center',
-      verticalPosition: 'bottom',
+      verticalPosition: 'top',
     });
   } 
 
@@ -49,7 +49,15 @@ export class LoginComponent {
       const user = this.authService.login(credentials);
 
       if (user) {
-        this.showSnackBar(`Bienvenido, ${user.firstName}`);
+        var _role:  string = '';
+        if(user.role==='WRITER'){
+          _role = 'ESCRITOR';
+        }
+        else if (user.role==='READER'){
+          _role = 'LECTOR';
+
+        }
+        this.showSnackBar(`Bienvenido, ${user.firstName}, te has logueado como ${_role}`);
 
 
         if (user.role === 'WRITER') {

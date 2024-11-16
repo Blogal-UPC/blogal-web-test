@@ -7,6 +7,7 @@ import { CategoryFormComponent } from './category-form/category-form.component'
 import { HomepageComponent } from './homepage/homepage.component'
 import { ArticleCatalogComponent } from '../../shared/components/article-catalog/article-catalog.component'
 import { ArticleDetailComponent } from '../../shared/components/article-detail/article-detail.component'
+import { SaveCatalogComponent } from '../../shared/components/save-catalog/save-catalog.component'
 
 
 export const writerRoutes: Routes=[
@@ -22,9 +23,10 @@ export const writerRoutes: Routes=[
             {path:'articles/edit/:id', component:ArticleFormComponent},
 
             {path:'categories', component:CategoryListComponent},
-            {path:'categories/add', component:CategoryFormComponent},
-            {path:'categories/edit/:id', component:CategoryFormComponent}
+            {path:'categproes/add', component:CategoryFormComponent},
+            {path:'categories/edit/:id', component:CategoryFormComponent},
 
+            {path:'saved',component:SaveCatalogComponent},
         ]
     }
 ]
