@@ -1,1 +1,23 @@
-<p>revenue works!</p>
+<div class="revenue-container">
+    <div class="revenue-table">
+      <h2>Panel de Ingresos Mensuales</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Mes</th>
+            <th>Donaciones</th>
+            <th>Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let revenue of revenues">
+            <td>{{ revenue.month }}</td>
+            <td>{{ revenue.donationsCount }}</td>
+            <td class="total">${{ revenue.total }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  
+  
