@@ -10,6 +10,7 @@ import {MatInput} from '@angular/material/input';
 import {MatButton, MatIconButton} from '@angular/material/button';
 import {MatLabel} from '@angular/material/form-field';
 import {MatGridListModule} from '@angular/material/grid-list';
+import {AuthService} from '../../../../core/services/auth.service';
 
 @Component({
   selector: 'app-comments',
@@ -35,30 +36,43 @@ export class CommentsComponent {
   comments: Comment[] = [];
   commentForm: FormGroup;
 
-  constructor(private articleService: ArticleService, private formBuilder: FormBuilder) {
+  constructor(
+    private articleService: ArticleService,
+    private formBuilder: FormBuilder,
+    private authService: AuthService) {
     this.commentForm = this.formBuilder.group({
       content: ['', Validators.required],
     });
   }
 
   ngOnInit(): void {
+    this.loadComments();
+  }
+
+  loadComments(): void {
     const article = this.articleService.getArticleById(this.articleId);
     this.comments = article ? article.comments : [];
   }
 
   onSubmit(): void {
     if (this.commentForm.valid) {
-      const newComment: any = {
-        id: new Date().getTime(),
-        author: this.commentForm.value.author,
-        date: new Date(),
-        content: this.commentForm.value.content,
-        likes: 0,
-        dislikes: 0
-      };
-      this.articleService.addComment(this.articleId, newComment);
-      this.comments.push(newComment);
-      this.commentForm.reset();
+      const user = this.authService.getcurrentUser();
+      if (user) {
+        const newComment: any = {
+          id: new Date().getTime(),
+          author: `${user.firstName} ${user.lastName}`,
+          date: new Date(),
+          content: this.commentForm.value.content,
+          likes: 0,
+          dislikes: 0
+        };
+        this.articleService.addComment(this.articleId, newComment);
+        this.loadComments();
+        this.commentForm.reset();
+      } else {
+        // Manejar el caso donde no hay un usuario autenticado
+        console.log('No hay usuario autenticado');
+      }
     }
   }
 
