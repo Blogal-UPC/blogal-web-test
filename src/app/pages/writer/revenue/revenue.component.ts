@@ -6,6 +6,7 @@ import { Payment } from '../../../shared/models/payment.model';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import {Chart} from 'chart.js/auto';
 
+
 @Component({
   selector: 'app-revenue',
   standalone: true,
@@ -14,6 +15,7 @@ import {Chart} from 'chart.js/auto';
   styleUrl: './revenue.component.css'
 })
 export class RevenueComponent {
+
   private revenueService=inject(RevenueService);
   private authService=inject(AuthService);
 
@@ -90,6 +92,4 @@ export class RevenueComponent {
       }
     });
   }
-  
-
 }

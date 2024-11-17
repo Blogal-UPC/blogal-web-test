@@ -9,6 +9,7 @@ import { ArticleCatalogComponent } from '../../shared/components/article-catalog
 import { ArticleDetailComponent } from '../../shared/components/article-detail/article-detail.component'
 import { SaveCatalogComponent } from '../../shared/components/save-catalog/save-catalog.component'
 import { RevenueComponent } from './revenue/revenue.component'
+import { NotificationsComponent } from './notifications/notifications.component'
 
 
 
@@ -20,10 +21,10 @@ export const writerRoutes: Routes=[
             {path:'homepage',component:HomepageComponent},
             {path:'catalog',component:ArticleCatalogComponent},
             {path:'catalog/article/details/:id', component:ArticleDetailComponent},
-            
+
             {path:'articles/add', component:ArticleFormComponent},
             {path:'articles/edit/:id', component:ArticleFormComponent},
-            
+
             {path:'categories', component:CategoryListComponent},
             {path:'categproes/add', component:CategoryFormComponent},
             {path:'categories/edit/:id', component:CategoryFormComponent},
@@ -31,7 +32,9 @@ export const writerRoutes: Routes=[
             {path:'saved',component:SaveCatalogComponent},
             {path:'revenue',component:RevenueComponent},
 
-            
+            {path:'notifications',component:NotificationsComponent}
+
+
         ]
     }
 ]
