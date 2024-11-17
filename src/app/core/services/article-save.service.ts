@@ -48,4 +48,8 @@ export class ArticleSaveService {
     };
   }
   constructor() { }
+
+  getSavedPublicationsCount(): number {
+    return this.articleSaves.length;
+  }
 }

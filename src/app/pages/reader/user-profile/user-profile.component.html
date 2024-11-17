@@ -1,0 +1,13 @@
+<div class="user-profile">
+    <h1>{{ userName }}</h1>
+    <p>{{ userDescription }}</p>
+    <button (click)="editDescription()">Editar Descripción</button>
+    <p>Publicaciones guardadas: {{ savedPublicationsCount }}</p>
+    </div>
+      
+    <!-- Modal para editar la descripción -->
+    <div id="editDescriptionModal">
+    <label for="userDescription">Descripción del Usuario:</label>
+    <textarea id="userDescription" [(ngModel)]="userDescription"></textarea>
+    <button (click)="saveDescription()">Guardar</button>
+    </div>
