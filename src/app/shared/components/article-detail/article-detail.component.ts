@@ -73,15 +73,19 @@ export class ArticleDetailComponent {
   }
 
 
-  addArticleSave(article: Article){
-    const user=this.authService.getcurrentUser();
-    if(user){
-      this.articleSaveService.addArticleSave(user,article);
-      this.showSnackBar('Artículo guardado para ver más tarde');
+  addArticleSave(article: Article): void {
+    const user = this.authService.getcurrentUser();
+    if (!user) {
+      this.showSnackBar('No hay usuario');
+      return;
     }
-    else{
-      this.showSnackBar('no hay usuario');
+    const articleSaves = this.articleSaveService.getArticleSaveByOwnerID(user.id);
+    if (articleSaves?.article_id.includes(article.id)) {
+      this.showSnackBar('Ya ha guardado el artículo');
+      return;
     }
+    this.articleSaveService.addArticleSave(user, article);
+    this.showSnackBar('Artículo guardado para ver más tarde');
   }
 
 
