@@ -17,6 +17,10 @@ html {
   @include mat.all-component-typographies(theme.$light-theme);
   @include mat.typography-hierarchy(theme.$light-theme);
 
+  .mat-toolbar {
+    background: mat.get-theme-color(theme.$light-theme, surface);
+  }
+  
   .polls-main-container {
     background: mat.get-theme-color(theme.$light-theme, surface);
   }
@@ -24,7 +28,7 @@ html {
   .polls-on-main-container {
     background: mat.get-theme-color(theme.$light-theme, surface-container);
   }
-
+ 
   .info-article {
     background: mat.get-theme-color(theme.$light-theme, surface-container);
     //background: mat.get-theme-color(theme.$light-theme, primary-container);

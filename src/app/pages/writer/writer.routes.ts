@@ -12,6 +12,7 @@ import { RevenueComponent } from './revenue/revenue.component'
 import { NotificationsComponent } from './notifications/notifications.component'
 
 
+
 export const writerRoutes: Routes=[
     {
         path:'',
@@ -30,7 +31,9 @@ export const writerRoutes: Routes=[
 
             {path:'saved',component:SaveCatalogComponent},
             {path:'revenue',component:RevenueComponent},
+
             {path:'notifications',component:NotificationsComponent}
+
 
         ]
     }
