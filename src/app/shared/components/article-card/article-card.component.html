@@ -11,9 +11,9 @@
           <p class="article-publication">Publicado en: {{ article.publicationDate | date }}</p>
         </mat-card-content>
         <mat-card-actions>
-          <button mat-flat-button color="primary" [routerLink]="['../catalog/article/details', article.id]">Ver detalles</button>
-          <button mat-button color="accent" (click)="addArticleSave(article)" *ngIf="showSaveButton">Guardar</button>
-          <button mat-button color="accent" (click)="deleteArticleSave(article)" *ngIf="!showSaveButton">Eliminar</button>
+          <button mat-flat-button [routerLink]="['../catalog/article/details', article.id]">Ver detalles</button>
+          <button mat-button (click)="addArticleSave(article)" *ngIf="showSaveButton">Guardar</button>
+          <button mat-button (click)="deleteArticleSave(article)" *ngIf="!showSaveButton">Eliminar</button>
         </mat-card-actions>
       </mat-card>
     }@empty {

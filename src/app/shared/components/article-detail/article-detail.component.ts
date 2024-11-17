@@ -5,6 +5,12 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ArticleService } from '../../../core/services/article.services';
 import { Tag } from '../../models/tag.model';
 import { TagService } from '../../../core/services/tag.services';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatIconModule} from '@angular/material/icon';
+import {MatIconButton} from '@angular/material/button';
+import {MatCard, MatCardContent} from '@angular/material/card';
+import {ArticleSaveService} from '../../../core/services/article-save.service';
+import {CommentsComponent} from './comments/comments.component';
 import { ControlEvent, FormBuilder, FormGroup, FormsModule, Validators } from '@angular/forms';
 import { ArticleDetail } from '../../models/article-detail.model';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -16,14 +22,15 @@ import { RevenueService } from '../../../core/services/revenue.service';
 import { Payment } from '../../models/payment.model';
 
 
+
 @Component({
   selector: 'app-article-detail',
   standalone: true,
-  imports: [CommonModule,MatButtonModule,MatInputModule,MatFormFieldModule,FormsModule],
+
+  imports: [CommonModule,MatButtonModule,MatInputModule,MatFormFieldModule,FormsModule,
+    MatToolbarModule,MatIconModule,MatIconButton,MatCard,MatCardContent,CommentsComponent],
   templateUrl: './article-detail.component.html',
-  styleUrl: './article-detail.component.css'
-  
-  
+  styleUrl: './article-detail.component.scss'
 })
 export class ArticleDetailComponent {
 
@@ -43,6 +50,9 @@ export class ArticleDetailComponent {
   articleDetail:ArticleDetail|null=null;
   tags_list: Tag[]=[];
 
+  private articleSaveService = inject(ArticleSaveService);
+  
+
   ngOnInit(): void {
     const articleId = Number(this.route.snapshot.paramMap.get('id'));
 
@@ -60,9 +70,22 @@ export class ArticleDetailComponent {
       this.tags_list.push(this.tagService.getTagById(tag)!);
     });
     this.articleDetail=this.articleService.getArticleDetailById(this.article.id);
-
   }
-  
+
+
+  addArticleSave(article: Article){
+    const user=this.authService.getcurrentUser();
+    if(user){
+      this.articleSaveService.addArticleSave(user,article);
+      this.showSnackBar('Artículo guardado para ver más tarde');
+    }
+    else{
+      this.showSnackBar('no hay usuario');
+    }
+  }
+
+
+
   goBack(): void {
     this.location.back();
   }
@@ -73,8 +96,7 @@ export class ArticleDetailComponent {
       verticalPosition: 'bottom',
     });
   }
-  donate()
-  {
+  donate(){
     if(!this.currentUser){
       return;
     }
@@ -101,4 +123,5 @@ export class ArticleDetailComponent {
       this.donationValue=Number(this.donationValue);
     }
   }
+  
 }

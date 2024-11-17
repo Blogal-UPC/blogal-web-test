@@ -1,27 +1,26 @@
+
 import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
 import { Article } from '../../models/article.model';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { RouterLink } from '@angular/router';
 import {MatButton} from '@angular/material/button';
-import {MatDivider} from '@angular/material/divider';
-import { ArticleSaveService } from '../../../core/services/article-save.service';
-import { AuthService } from '../../../core/services/auth.service';
-import { User } from '../../models/user.model';
-import { MatSnackBar } from '@angular/material/snack-bar';
-
+import {ArticleSaveService} from '../../../core/services/article-save.service';
+import {AuthService} from '../../../core/services/auth.service';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 
 @Component({
   selector: 'app-article-card',
   standalone: true,
-  imports: [CommonModule, MatCardModule, RouterLink, MatButton, MatDivider],
+  imports: [CommonModule, MatCardModule, RouterLink, MatButton],
   templateUrl: './article-card.component.html',
   styleUrl: './article-card.component.css'
 })
 export class ArticleCardComponent {
-  @Input() articles: Article[] = []; 
+  @Input() articles: Article[] = [];
   @Input() showSaveButton: boolean = true;
+
   @Output() selectedAuthor = new EventEmitter<string>();
   private articleSaveService=inject(ArticleSaveService);
   private authService=inject(AuthService);
@@ -48,6 +47,7 @@ export class ArticleCardComponent {
     this.articleSaveService.addArticleSave(user, article);
     this.showSnackBar('Artículo guardado para ver más tarde');
   }
+
   deleteArticleSave(article: Article): void {
     const user = this.authService.getcurrentUser();
   

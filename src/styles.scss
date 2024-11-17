@@ -16,4 +16,12 @@ html {
   @include mat.system-level-typography(theme.$light-theme);
   @include mat.all-component-typographies(theme.$light-theme);
   @include mat.typography-hierarchy(theme.$light-theme);
+
+  .mat-toolbar {
+    background: mat.get-theme-color(theme.$light-theme, surface);
+  }
+  .info-article {
+    background: mat.get-theme-color(theme.$light-theme, surface-container);
+    //background: mat.get-theme-color(theme.$light-theme, primary-container);
+  }
 }
