@@ -1,49 +1,60 @@
 <h2 class="mat-headline-large" style="text-align: center; margin-top: 10px">Encuestas</h2>
-<div class="container-center">
-    <div>
-        <div *ngFor="let poll of polls">
-            <mat-card appearance="outlined" style="max-width: 500px; margin-top: 5px; margin-bottom: 5px">
-                <mat-card-header>
-                    <mat-card-title-group>
-                        <mat-icon mat-card-avatar>poll</mat-icon>
-                        <mat-card-title>{{ poll.question }}</mat-card-title>
-                        <mat-card-subtitle>{{ poll.author }}</mat-card-subtitle>
-                    </mat-card-title-group>
-                </mat-card-header>
-                <mat-card-content style="padding-top: 5px">
-                    <p class="mat-body-medium">{{ poll.description }}</p>
+<div style="display: flex;
+  justify-content: center;">
+  <mat-card class="polls-main-container" style="width: 500px">
+    <mat-card-content>
+      <mat-tab-group>
+        <mat-tab label="Encuestas">
+          <!--    <div class="container-center">-->
+          <!--      <div>-->
+          <div *ngFor="let poll of polls">
+            <mat-card appearance="outlined" style="max-width: 500px; margin-top: 5px; margin-bottom: 10px">
+              <mat-card-header>
+                <mat-card-title-group>
+                  <mat-icon mat-card-avatar>poll</mat-icon>
+                  <mat-card-title>{{ poll.question }}</mat-card-title>
+                  <mat-card-subtitle>{{ poll.author }}</mat-card-subtitle>
+                </mat-card-title-group>
+              </mat-card-header>
+              <mat-card-content style="padding-top: 5px">
+                <p class="mat-body-medium">{{ poll.description }}</p>
 
-                    <!-- Mostrar la lista de selección antes de votar -->
-                    <mat-selection-list *ngIf="!hasVoted[poll.id]">
-                        <mat-list-option (click)="vote(poll.id, option)"
-                                         *ngFor="let option of poll.options"
-                                         [selected]="option === selectedOptions[poll.id]"
-                                         class="mat-body-medium">
-                            {{ option.text }}
-                        </mat-list-option>
-                    </mat-selection-list>
+                <!-- Mostrar la lista de selección antes de votar -->
+                <mat-selection-list *ngIf="!hasVoted[poll.id]">
+                  <mat-list-option (click)="vote(poll.id, option)"
+                                   *ngFor="let option of poll.options"
+                                   [selected]="option === selectedOptions[poll.id]"
+                                   class="mat-body-medium">
+                    {{ option.text }}
+                  </mat-list-option>
+                </mat-selection-list>
 
-                    <!-- Mostrar los resultados después de votar -->
-                    <div *ngIf="hasVoted[poll.id]">
-                        <div *ngFor="let option of poll.options" style="margin-bottom: 10px;">
-                            <div style="display: flex; align-items: center;">
-                                <span style="flex: 1;">{{ getPercentage(poll, option.votes) }}% {{ option.text }}</span>
-                                <mat-icon *ngIf="option === selectedOptions[poll.id]">check</mat-icon>
-                            </div>
-                            <mat-progress-bar [value]="getPercentage(poll, option.votes)"
-                                              mode="determinate"></mat-progress-bar>
-                        </div>
+                <!-- Mostrar los resultados después de votar -->
+                <div *ngIf="hasVoted[poll.id]">
+                  <div *ngFor="let option of poll.options" style="margin-bottom: 10px;">
+                    <div style="display: flex; align-items: center;">
+                      <span style="flex: 1;">{{ getPercentage(poll, option.votes) }}% {{ option.text }}</span>
+                      <mat-icon *ngIf="option === selectedOptions[poll.id]">check</mat-icon>
                     </div>
-                    <mat-card-footer>
-                        <span class="mat-label-small">{{ poll.publishDate | date: 'shortDate' }}</span>
-                    </mat-card-footer>
-                </mat-card-content>
-                <mat-card-actions>
-                    <button (click)="submitVote(poll.id)" [disabled]="hasVoted[poll.id]" mat-flat-button>Votar</button>
-                </mat-card-actions>
+                    <mat-progress-bar [value]="getPercentage(poll, option.votes)"
+                                      mode="determinate"></mat-progress-bar>
+                  </div>
+                </div>
+                <mat-card-footer>
+                  <span class="mat-label-small">{{ poll.publishDate | date: 'shortDate' }}</span>
+                </mat-card-footer>
+              </mat-card-content>
+              <mat-card-actions>
+                <button (click)="submitVote(poll.id)" [disabled]="hasVoted[poll.id]" mat-flat-button>Votar</button>
+              </mat-card-actions>
             </mat-card>
-        </div>
-    </div>
+          </div>
+          <!--      </div>-->
+          <!--    </div>-->
+        </mat-tab>
+      </mat-tab-group>
+    </mat-card-content>
+  </mat-card>
 </div>
 <br>
 <br>
