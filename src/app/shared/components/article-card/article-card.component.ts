@@ -25,8 +25,8 @@ export class ArticleCardComponent {
   @Output() selectedAuthor = new EventEmitter<string>();
   private articleSaveService=inject(ArticleSaveService);
   private authService=inject(AuthService);
+  
   private snackBar = inject(MatSnackBar);
-
   showSnackBar(message:string) {
     this.snackBar.open(message,'Cerrar',{
       duration:3000,
