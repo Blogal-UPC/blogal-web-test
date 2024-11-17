@@ -12,16 +12,14 @@ import {MatCard, MatCardContent} from '@angular/material/card';
 import {ArticleSaveService} from '../../../core/services/article-save.service';
 import {AuthService} from '../../../core/services/auth.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
-
+import {CommentsComponent} from './comments/comments.component';
 
 @Component({
   selector: 'app-article-detail',
   standalone: true,
-  imports: [CommonModule, MatToolbarModule, MatIconModule, MatIconButton, MatCard, MatCardContent],
+  imports: [CommonModule, MatToolbarModule, MatIconModule, MatIconButton, MatCard, MatCardContent, CommentsComponent],
   templateUrl: './article-detail.component.html',
   styleUrl: './article-detail.component.scss'
-
-
 })
 export class ArticleDetailComponent {
   article: Article | null = null;

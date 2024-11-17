@@ -1,0 +1,42 @@
+<div>
+  <h2 class="mat-headline-medium">Comentarios</h2>
+  <div class="comment-section-grid">
+    <!-- Avatar -->
+    <div class="avatar-container">
+      <img src="https://www.w3schools.com/howto/img_avatar.png" alt="Avatar" class="avatar">
+    </div>
+
+    <div class="form-container">
+      <form [formGroup]="commentForm" (ngSubmit)="onSubmit()" style="display: grid">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Agrega un comentario</mat-label>
+          <textarea matInput formControlName="content"></textarea>
+        </mat-form-field>
+        <button mat-flat-button type="submit" [disabled]="!commentForm.valid" class="comment-button">Comentar</button>
+      </form>
+    </div>
+  </div>
+
+  <div *ngFor="let comment of comments; let i = index" class="comment-section-grid" style="margin-top: 10px;">
+    <div class="avatar-container">
+      <img src="https://www.w3schools.com/howto/img_avatar.png" alt="Avatar" class="avatar">
+    </div>
+    <div class="content-container">
+      <div class="header">
+        <p class="mat-body-medium">{{ comment.author }}</p>
+        <span class="mat-label-small">{{ comment.date | date }}</span>
+      </div>
+      <p class="mat-body-medium">{{ comment.content }}</p>
+      <div class="actions">
+        <button mat-icon-button (click)="incrementLikes(comment)">
+          <mat-icon>thumb_up_off_alt</mat-icon>
+        </button>
+        <span class="mat-label-medium" style="width: 40px">{{ comment.likes }}</span>
+        <button mat-icon-button (click)="incrementDislikes(comment)">
+          <mat-icon>thumb_down_off_alt</mat-icon>
+        </button>
+        <span class="mat-label-medium" style="margin-right: 10px;">{{ comment.dislikes }}</span>
+      </div>
+    </div>
+  </div>
+</div>

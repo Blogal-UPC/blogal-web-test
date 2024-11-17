@@ -19,6 +19,32 @@ export class ArticleService {
         tags_id: [7, 17],
         publicationDate: new Date('2023-03-05'),
         summary: 'Un análisis de cómo el cambio climático afecta los patrones de precipitación a nivel mundial.',
+        comments: [
+          {
+            id: 1,
+            author: 'Carlos Montalbán',
+            date: new Date('2023-03-06'),
+            content: 'Excelente artículo. Muy informativo y bien redactado.',
+            likes: 10,
+            dislikes: 1
+          },
+          {
+            id: 2,
+            author: 'Laura Mendieta',
+            date: new Date('2023-03-07'),
+            content: 'Me gustó el análisis realizado sobre el clima. ¿Podrías incluir más gráficos?',
+            likes: 2,
+            dislikes: 1
+          },
+          {
+            id: 3,
+            author: 'Juan Pérez',
+            date: new Date('2023-03-08'),
+            content: 'Interesante punto de vista, aunque creo que faltó profundizar en algunos aspectos técnicos.',
+            likes: 0,
+            dislikes: 20
+          }
+        ]
     },
     {
         id: 2,
@@ -33,6 +59,7 @@ export class ArticleService {
         tags_id: [17, 15],
         publicationDate: new Date('2023-06-12'),
         summary: 'Explora cómo los cambios climáticos afectan la migración de animales en diversas regiones.',
+        comments: []
     },
     {
       id: 3,
@@ -47,6 +74,7 @@ export class ArticleService {
       tags_id: [16, 24],
       publicationDate: new Date('2023-02-21'),
       summary: 'Cómo las plantas del desierto sobreviven en condiciones extremas de calor y sequía.',
+      comments: []
     },
     {
         id: 4,
@@ -61,6 +89,7 @@ export class ArticleService {
         tags_id: [23, 11],
         publicationDate: new Date('2023-05-18'),
         summary: 'Exploración de la variedad de orquídeas y su importancia ecológica en los bosques tropicales.',
+        comments: []
     },
     {
       id: 5,
@@ -75,6 +104,7 @@ export class ArticleService {
       tags_id: [7, 21],
       publicationDate: new Date('2022-11-23'),
       summary: 'Estudio sobre cómo el deshielo de glaciares contribuye al aumento del nivel del mar y sus consecuencias.',
+      comments: []
     },
     {
       id: 6,
@@ -89,6 +119,7 @@ export class ArticleService {
       tags_id: [3, 17],
       publicationDate: new Date('2023-02-12'),
       summary: 'Análisis de cómo el cambio climático intensifica los fenómenos meteorológicos extremos.',
+      comments: []
     },
     {
       id: 7,
@@ -103,6 +134,7 @@ export class ArticleService {
       tags_id: [15, 16],
       publicationDate: new Date('2023-05-30'),
       summary: 'Investigación sobre cómo los animales nocturnos sobreviven en climas extremos del desierto.',
+      comments: []
     },
     {
       id: 8,
@@ -117,6 +149,7 @@ export class ArticleService {
       tags_id: [10, 17],
       publicationDate: new Date('2023-07-05'),
       summary: 'Una exploración de las rutas migratorias de las ballenas y sus amenazas actuales.',
+      comments: []
     },
     {
       id: 9,
@@ -131,6 +164,7 @@ export class ArticleService {
       tags_id:[2],
       publicationDate: new Date('2018-10-01'),
       summary:'Historia de la evolución de las tortugas',
+      comments: []
     },
     {
       id: 10,
@@ -145,6 +179,7 @@ export class ArticleService {
       tags_id: [3],
       publicationDate: new Date('2019-05-15'),
       summary: 'Explora la biodiversidad y secretos del océano',
+      comments: []
     },
     {
       id: 11,
@@ -159,6 +194,7 @@ export class ArticleService {
       tags_id: [4],
       publicationDate: new Date('2020-07-21'),
       summary: 'Conoce los principios básicos de la astronomía',
+      comments: []
     },
   ];
 
@@ -178,6 +214,14 @@ export class ArticleService {
 
   getArticleById(id: number): Article | null {
     return this.article.find(a => a.id === id) ?? null;
+  }
+
+  addComment(articleId: number, comment: Comment): void {
+    const article = this.getArticleById(articleId);
+    const com_aux:any = comment;
+    if (article) {
+      article.comments.push(com_aux);
+    }
   }
 
   deleteArticle(id: number): boolean {
