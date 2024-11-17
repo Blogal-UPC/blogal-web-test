@@ -64,23 +64,62 @@ export class CommentsComponent {
           date: new Date(),
           content: this.commentForm.value.content,
           likes: 0,
-          dislikes: 0
+          dislikes: 0,
+          likedBy: [],
+          dislikedBy: []
         };
         this.articleService.addComment(this.articleId, newComment);
         this.loadComments();
         this.commentForm.reset();
       } else {
-        // Manejar el caso donde no hay un usuario autenticado
         console.log('No hay usuario autenticado');
       }
     }
   }
 
   incrementLikes(comment: Comment): void {
-    comment.likes++;
+    const user = this.authService.getcurrentUser();
+    if (!user) return;
+
+    const userId = user.id;
+    if (comment.likedBy.includes(userId)) {
+      comment.likes--;
+      comment.likedBy = comment.likedBy.filter(id => id !== userId);
+    } else {
+      if (comment.dislikedBy.includes(userId)) {
+        comment.dislikes--;
+        comment.dislikedBy = comment.dislikedBy.filter(id => id !== userId);
+      }
+      comment.likes++;
+      comment.likedBy.push(userId);
+    }
   }
 
   incrementDislikes(comment: Comment): void {
-    comment.dislikes++;
+    const user = this.authService.getcurrentUser();
+    if (!user) return;
+
+    const userId = user.id;
+    if (comment.dislikedBy.includes(userId)) {
+      comment.dislikes--;
+      comment.dislikedBy = comment.dislikedBy.filter(id => id !== userId);
+    } else {
+      if (comment.likedBy.includes(userId)) {
+        comment.likes--;
+        comment.likedBy = comment.likedBy.filter(id => id !== userId);
+      }
+      comment.dislikes++;
+      comment.dislikedBy.push(userId);
+    }
+  }
+
+  hasLiked(comment: Comment): boolean {
+    const user = this.authService.getcurrentUser();
+    return user ? comment.likedBy.includes(user.id) : false;
+  }
+
+  hasDisliked(comment: Comment): boolean {
+    const user = this.authService.getcurrentUser();
+    return user ? comment.dislikedBy.includes(user.id) : false;
   }
 }

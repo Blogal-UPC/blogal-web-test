@@ -4,5 +4,7 @@ export interface Comment{
   date: Date,
   content: string,
   likes: number,
-  dislikes: number
+  dislikes: number,
+  likedBy: number[], // ids
+  dislikedBy: number[]
 }

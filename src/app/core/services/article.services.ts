@@ -26,7 +26,9 @@ export class ArticleService {
             date: new Date('2023-03-06'),
             content: 'Excelente artículo. Muy informativo y bien redactado.',
             likes: 10,
-            dislikes: 1
+            dislikes: 1,
+            likedBy: [],
+            dislikedBy: []
           },
           {
             id: 2,
@@ -34,7 +36,9 @@ export class ArticleService {
             date: new Date('2023-03-07'),
             content: 'Me gustó el análisis realizado sobre el clima. ¿Podrías incluir más gráficos?',
             likes: 2,
-            dislikes: 1
+            dislikes: 1,
+            likedBy: [],
+            dislikedBy: []
           },
           {
             id: 3,
@@ -42,7 +46,9 @@ export class ArticleService {
             date: new Date('2023-03-08'),
             content: 'Interesante punto de vista, aunque creo que faltó profundizar en algunos aspectos técnicos.',
             likes: 0,
-            dislikes: 20
+            dislikes: 20,
+            likedBy: [],
+            dislikedBy: []
           }
         ]
     },

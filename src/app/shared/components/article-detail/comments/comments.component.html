@@ -29,11 +29,11 @@
       <p class="mat-body-medium">{{ comment.content }}</p>
       <div class="actions">
         <button mat-icon-button (click)="incrementLikes(comment)">
-          <mat-icon>thumb_up_off_alt</mat-icon>
+          <mat-icon>{{ hasLiked(comment) ? 'thumb_up' : 'thumb_up_off_alt' }}</mat-icon>
         </button>
         <span class="mat-label-medium" style="width: 40px">{{ comment.likes }}</span>
         <button mat-icon-button (click)="incrementDislikes(comment)">
-          <mat-icon>thumb_down_off_alt</mat-icon>
+          <mat-icon>{{ hasDisliked(comment) ? 'thumb_down' : 'thumb_down_off_alt' }}</mat-icon>
         </button>
         <span class="mat-label-medium" style="margin-right: 10px;">{{ comment.dislikes }}</span>
       </div>
