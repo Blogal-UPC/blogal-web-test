@@ -229,3 +229,21 @@ header{
     border-radius: 5%;
 }
 
+.guide-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2% 5%;
+    margin: 2% 0;
+}
+
+.guide-title {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-bottom: 1%;
+}
+
+.guide-content {
+    font-size: 1em;
+    line-height: 1.5;
+}
