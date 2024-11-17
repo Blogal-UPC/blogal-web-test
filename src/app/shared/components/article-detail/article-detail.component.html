@@ -1,22 +1,55 @@
 @if(article){
     <div class="detail">
+      <br><br>
       <h2>{{ article.title }}</h2>
-      <p><strong>Categoría:</strong> {{ article.category.name }}</p>
-      <p><strong>Resumen:</strong> {{ article.summary }}</p>
-
-      <p><strong>Etiquetas:</strong> 
-        @for(tag of tags_list; track tags_list){
-            #{{ tag.name }} 
-        }
-        
-        </p>
-      <p>
-        <strong>Fecha de Publicación:</strong> {{ article.publicationDate | date }}
-      </p>
-  
-      <button mat-raised-button color="primary" (click)="goBack()">
-        Regresar al Catálogo
-      </button>
+      <div class="row">
+        <div class="col-md-6">
+          <p><strong>Categoría:</strong> {{ article.category.name }}</p>
+          <p><strong>Resumen:</strong> {{ article.summary }}</p>
+    
+          <p><strong>Etiquetas:</strong> 
+            @for(tag of tags_list; track tags_list){
+                #{{ tag.name }} 
+            }
+            </p>
+          <p>
+            <strong>Fecha de Publicación:</strong> {{ article.publicationDate | date }}
+          </p>
+          <p>
+            {{articleDetail?.content}}
+          </p>
+        </div>
+        <div class="col-md-6">
+          <img src={{articleDetail?.image}} alt="img">
+        </div>
+      </div>
+      <div class="row mt-5 d-flex justify-content-center">
+        <div class="col-md-6 d-flex justify-content-center">
+          <button mat-raised-button color="primary" (click)="goBack()">Regresar al Catálogo</button>
+        </div>
+        <div class="col-md-6 d-flex justify-content-center">
+          <div class="donar-container mt-5 d-flex justify-content-center">
+            <div class="border-container p-3">
+              <h3 class="donation-title">Donaciones</h3>
+              <div class="input-group">
+                <span class="input-group-text">PEN</span>
+                <input 
+                  type="number" 
+                  matInput 
+                  class="form-control"  
+                  [(ngModel)]="donationValue" 
+                  placeholder="Monto"
+                  (input)="removeFrontZeros()"
+                >
+                <button mat-raised-button color="primary" class="btn-donar" (click)="donate()">Donar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      
+      <br><br><br><br><br><br><br><br>
     </div>
   
     }@else {

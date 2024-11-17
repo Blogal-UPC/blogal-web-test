@@ -1,4 +1,4 @@
-import { Component, inject, Input } from '@angular/core';
+import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
 import { Article } from '../../models/article.model';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
@@ -22,10 +22,11 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class ArticleCardComponent {
   @Input() articles: Article[] = []; 
   @Input() showSaveButton: boolean = true;
+  @Output() selectedAuthor = new EventEmitter<string>();
   private articleSaveService=inject(ArticleSaveService);
   private authService=inject(AuthService);
+  
   private snackBar = inject(MatSnackBar);
-
   showSnackBar(message:string) {
     this.snackBar.open(message,'Cerrar',{
       duration:3000,
@@ -33,34 +34,37 @@ export class ArticleCardComponent {
       verticalPosition: 'bottom',
     });
   }
-  addArticleSave(article: Article){
-    const user=this.authService.getcurrentUser();
-    if(user){
-      this.articleSaveService.addArticleSave(user,article);
-      this.showSnackBar('Artículo guardado para ver más tarde');
+  addArticleSave(article: Article): void {
+    const user = this.authService.getcurrentUser();
+    if (!user) {
+      this.showSnackBar('No hay usuario');
+      return;
     }
-    else{
-
-      this.showSnackBar('no hay usuario');
+    const articleSaves = this.articleSaveService.getArticleSaveByOwnerID(user.id);
+    if (articleSaves?.article_id.includes(article.id)) {
+      this.showSnackBar('Ya ha guardado el artículo');
+      return;
+    }
+    this.articleSaveService.addArticleSave(user, article);
+    this.showSnackBar('Artículo guardado para ver más tarde');
+  }
+  deleteArticleSave(article: Article): void {
+    const user = this.authService.getcurrentUser();
+  
+    if (!user) {
+      this.showSnackBar('Error, no se pudo obtener el usuario actual');
+      return;
+    }
+    const deleted = this.articleSaveService.deleteArticleSave(user, article);
+    if (deleted) {
+      this.showSnackBar('Se ha eliminado el artículo de guardados');
+      this.articles = this.articles.filter(a => a.id !== article.id);
+    } else {
+      this.showSnackBar('No se ha podido eliminar el artículo de guardados');
     }
   }
-  deleteArticleSave(article: Article){
-    const user=this.authService.getcurrentUser();
-    
-    if(user){
-      if(this.articleSaveService.deleteArticleSave(user,article)){
-        this.showSnackBar('Se ha eliminado el artículo de guardados');
-        this.articles = this.articles.filter(a=>a.id!==article.id);
-      }
-      else{
-        this.showSnackBar('No se ha podido eliminar el artículo de guardados');
-      }
-    }
-    else{
-
-      this.showSnackBar('Error, no se pudo obtener el usuario actual');
-    }
+  onAuthorSelect(author:string){
+    this.selectedAuthor.emit(author)
   }
 }
-
 
