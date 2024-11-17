@@ -1,37 +1,42 @@
 <div class="publication-container">
-    <h2>Publicación</h2>
+  <h2>Publicación</h2>
 
-    <div class="tipo-section">
-      <h3>Restricciones de visualización</h3>
-      <mat-checkbox [(ngModel)]="solo_suscriptores">Solo visible para suscriptores</mat-checkbox>
-    </div>
+  <div class="tipo-section">
+    <h3>Restricciones de visualización</h3>
+    <mat-checkbox [(ngModel)]="solo_suscriptores">Solo visible para suscriptores</mat-checkbox>
+  </div>
 
-    <!-- Textbox para coautores -->
-    <div class="coauthors-section">
-      <h3>Agregar Coautores</h3>
-      <input #coauthorInput type="text" placeholder="Nombre del coautor" />
-      <button type="button" (click)="addCoauthor(coauthorInput.value)">Agregar Coautor</button>
-    </div>
+  <!-- Textbox para coautores -->
+  <div class="coauthors-section">
+    <h3>Agregar Coautores</h3>
+    <input #coauthorInput type="text" placeholder="Nombre del coautor" />
+    <button type="button" (click)="addCoauthor(coauthorInput.value)">Agregar Coautor</button>
+    <label for="authorSelect">Selecciona un autor:</label>
+    <select id="authorSelect" (change)="onAuthorSelect($event)">
+      <option value="">Selecciona un autor</option>
+      <option *ngFor="let author of allAuthors" [value]="author">{{ author }}</option>
+    </select>
+  </div>
 
-    <!-- Lista de coautores -->
-    <ul>
-      <li *ngFor="let coauthor of coauthors">{{ coauthor }}</li>
-    </ul>
+  <!-- Lista de coautores -->
+  <ul>
+    <li *ngFor="let coauthor of coauthors">{{ coauthor }}</li>
+  </ul>
 
-    <!-- Textbox para escribir el artículo -->
-    <div class="article-section">
-      <h3>Escribir Artículo</h3>
-      <textarea [(ngModel)]="content" placeholder="Escribe tu artículo aquí..." rows="10" cols="50"></textarea>
-    </div>
+  <!-- Textbox para escribir el artículo -->
+  <div class="article-section">
+    <h3>Escribir Artículo</h3>
+    <textarea [(ngModel)]="content" placeholder="Escribe tu artículo aquí..." rows="10" cols="50"></textarea>
+  </div>
 
-    <!-- Vista previa -->
-    <div class="preview-section">
-      <h3>Vista Previa</h3>
-      <div class="preview-content">{{ content }}</div>
-    </div>
+  <!-- Vista previa -->
+  <div class="preview-section">
+    <h3>Vista Previa</h3>
+    <div class="preview-content">{{ content }}</div>
+  </div>
 
-    <!-- Botón de publicar -->
-    <button type="button" (click)="publish()">Publicar</button>
+  <!-- Botón de publicar -->
+  <button type="button" (click)="publish()">Publicar</button>
 
     <!-- Importar plantillas -->
     <div class="templates-section">

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatCardModule} from '@angular/material/card';
@@ -22,23 +22,34 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './article-form.component.html',
   styleUrl: './article-form.component.css'
 })
-export class ArticleFormComponent {
+export class ArticleFormComponent implements OnInit{
   content: string = '';
   coauthors: string[] = [];
+  allAuthors: string[] = ['John Doe', 'Juan Solis', 'Ana Smith', 'Miguel Poma', 'Jane Smith']; // Lista estática de autores
   previewContent: string = '';
   solo_suscriptores: boolean = false;
 
-  addCoauthor(coauthor: string) {
-    if (coauthor) {
+  constructor() {}
+
+  ngOnInit(): void {}
+
+  addCoauthor(coauthor: string | null): void {
+    if (coauthor && !this.coauthors.includes(coauthor)) {
       this.coauthors.push(coauthor);
     }
+  }
+
+  onAuthorSelect(event: Event): void {
+    const selectElement = event.target as HTMLSelectElement;
+    const selectedAuthor = selectElement.value;
+    this.addCoauthor(selectedAuthor);
   }
 
   updatePreview(content: string) {
     this.previewContent = content;
   }
 
-  publish() {
+  publish(): void {
     // Lógica para publicar la publicación
     console.log('Publicación publicada con coautores:', this.coauthors);
     console.log('Contenido del artículo:', this.content);
