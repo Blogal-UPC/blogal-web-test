@@ -8,6 +8,8 @@ import { HomepageComponent } from './homepage/homepage.component'
 import { ArticleCatalogComponent } from '../../shared/components/article-catalog/article-catalog.component'
 import { ArticleDetailComponent } from '../../shared/components/article-detail/article-detail.component'
 import { SaveCatalogComponent } from '../../shared/components/save-catalog/save-catalog.component'
+import { RevenueComponent } from './revenue/revenue.component'
+import { NotificationsComponent } from './notifications/notifications.component'
 
 
 export const writerRoutes: Routes=[
@@ -27,6 +29,9 @@ export const writerRoutes: Routes=[
             {path:'categories/edit/:id', component:CategoryFormComponent},
 
             {path:'saved',component:SaveCatalogComponent},
+            {path:'revenue',component:RevenueComponent},
+            {path:'notifications',component:NotificationsComponent}
+
         ]
     }
 ]

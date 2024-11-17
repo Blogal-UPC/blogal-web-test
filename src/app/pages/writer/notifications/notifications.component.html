@@ -1,0 +1,18 @@
+<div class="notifications-container">
+    <h1>Notificaciones</h1>
+    
+    <div *ngIf="notifications.length > 0; else noNotifications">
+      <ul class="notifications-list">
+        <li *ngFor="let notification of notifications; let i = index" class="notification-item">
+          <p>{{ notification.message }}</p>
+          <button (click)="markAsRead(i)" class="read-btn">Leído</button>
+        </li>
+      </ul>
+      <button (click)="clearAllNotifications()" class="clear-btn">Marcar todos como leídos</button>
+    </div>
+  
+    <ng-template #noNotifications>
+      <p class="no-notifications">Usted no tiene ninguna notificacion.</p>
+    </ng-template>
+  </div>
+  
