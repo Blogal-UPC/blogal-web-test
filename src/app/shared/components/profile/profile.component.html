@@ -1,46 +1,62 @@
-@if(userProfile){
-    <mat-toolbar style="margin-bottom: 10px">
-        <button mat-icon-button (click)="goBack()" aria-label="Botón para regresar a la página anterior">
+@if(userProfile) {
+    <!-- Contenedor principal -->
+    <div class="profile-container">
+      <!-- Barra de herramientas -->
+      <mat-toolbar color="primary" class="toolbar">
+        <button mat-icon-button (click)="goBack()" aria-label="Regresar">
           <mat-icon>arrow_back</mat-icon>
         </button>
-        <span>Detalles del usuario</span>
+        <span>Detalles del Usuario</span>
         <span class="example-spacer"></span>
-        @if(currentUser?.role==='READER'&&currentUser!==userProfile){
-            <button mat-icon-button (click)="follow()" aria-label="Botón de corazon para seguir">
-                <mat-icon>favorite</mat-icon>
-              </button>
+        @if(currentUser?.role === 'READER' && currentUser !== userProfile) {
+          <button mat-icon-button (click)="follow()" aria-label="Seguir">
+            <mat-icon>favorite</mat-icon>
+          </button>
         }
-    </mat-toolbar>
-    
-    <div class="user-profile">
-        <h1>{{ userName }}</h1>
-        <p>{{ userDescription }}</p>
-        @if (userProfile===currentUser) {
-            <button (click)="editDescription()">Editar Descripción</button>
+      </mat-toolbar>
+  
+      <!-- Contenido del perfil -->
+      <div class="profile-content">
+        <!-- Información básica del usuario -->
+        <div class="profile-box">
+          <h1>{{ userName }}</h1>
+          <p>{{ userDescription }}</p>
+          @if(userProfile === currentUser) {
+            <button mat-raised-button color="accent" (click)="editDescription()">Editar Descripción</button>
+          }
+        </div>
+  
+        <!-- Estadísticas -->
+        <div class="profile-box stats-box">
+          <h3>Estadísticas</h3>
+          <p>Publicaciones guardadas: {{ savedPublicationsCount }}</p>
+        </div>
+  
+        <!-- Modal para editar descripción -->
+        <div *ngIf="editingDescription" id="editDescriptionModal" class="modal-box">
+          <h3>Editar Descripción</h3>
+          <label for="userDescription">Descripción del Usuario:</label>
+          <textarea id="userDescription" [(ngModel)]="userDescription" rows="4" cols="50"></textarea>
+          <button mat-raised-button color="primary" (click)="saveDescription()">Guardar</button>
+        </div>
+  
+        <!-- Botón para suscribirse -->
+        @if(currentUser?.role === 'READER' && userProfile !== currentUser && userProfile.role !== 'READER') {
+          <div class="subscribe-box">
+            <p>Apoya al autor con una suscripción</p>
+            <div class="input-group">
+              <span class="input-group-text">PEN 20</span>
+              <button mat-raised-button color="warn" class="btn-donar" (click)="subscribe()">Suscribirse</button>
+            </div>
+          </div>
         }
-        <p>Publicaciones guardadas: {{ savedPublicationsCount }}</p>
-    </div>
-        
-    <!-- Modal para editar la descripción -->
-    
-    <div id="editDescriptionModal">
-        <label for="userDescription">Descripción del Usuario:</label>
-        <textarea id="userDescription" [(ngModel)]="userDescription"></textarea>
-        @if (userProfile===currentUser) {
-        <button (click)="saveDescription()">Guardar</button>
-        }
-    </div>
-    
-    
-    @if(currentUser?.role==='READER'&&userProfile!==currentUser&&userProfile.role!=='READER'){
-    <div class="input-group">
-        <span class="input-group-text">PEN 20</span>
-        <button mat-raised-button color="primary" class="btn-donar" (click)="subscribe()">Suscribirse</button>
       </div>
-    }
-}
-@else{
-    <div>
-        <p>No se encuentra el usuario</p>
     </div>
-}
+  }
+  @else {
+    <!-- Mensaje de usuario no encontrado -->
+    <div class="not-found">
+      <p>No se encuentra el usuario</p>
+    </div>
+  }
+  <br><br><br><br><br><br><br><br><br>

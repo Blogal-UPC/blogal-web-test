@@ -35,6 +35,8 @@ export class ProfileComponent {
   userProfile: User|null=null;
   currentUser = this.authService.getcurrentUser();
   private snackBar=inject(MatSnackBar);
+  editingDescription : boolean =false;
+
   showSnackBar(message:string) {
     this.snackBar.open(message,'Cerrar',{
       duration:3000,
@@ -59,14 +61,14 @@ export class ProfileComponent {
   }
 
   editDescription(): void {
-    const modal = this.renderer.selectRootElement('#editDescriptionModal', true);
-    this.renderer.setStyle(modal, 'display', 'block');
+    this.editingDescription=true;
+    
   }
 
   saveDescription(): void {
-    const modal = this.renderer.selectRootElement('#editDescriptionModal', true);
-    this.renderer.setStyle(modal, 'display', 'none');
+    
     this.updateDescription(this.userDescription);
+    this.editingDescription=false;
   }
 
   updateDescription(newDescription: string): void {

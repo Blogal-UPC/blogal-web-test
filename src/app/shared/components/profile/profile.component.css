@@ -39,3 +39,69 @@
   .example-spacer {
     flex: 1 1 auto;
   }
+  .profile-container {
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
+    background-color: #f9f9f9;
+  }
+  
+  .toolbar {
+    margin-bottom: 16px;
+  }
+  
+  .profile-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  
+  .profile-box {
+    padding: 16px;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .stats-box {
+    grid-column: span 2;
+  }
+  
+  .subscribe-box {
+    padding: 16px;
+    background: #fffbe6;
+    border: 1px solid #ffd700;
+    border-radius: 8px;
+    text-align: center;
+  }
+  
+  .modal-box {
+    grid-column: span 2;
+    padding: 16px;
+    background: #eef;
+    border: 1px solid blue;
+    border-radius: 8px;
+  }
+  
+  .not-found {
+    text-align: center;
+    color: #999;
+    font-style: italic;
+  }
+  
+  .input-group {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .input-group-text {
+    margin-right: 8px;
+    font-weight: bold;
+  }
+  
+  button {
+    margin-top: 8px;
+  }
+  
