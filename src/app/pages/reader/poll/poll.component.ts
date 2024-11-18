@@ -7,7 +7,7 @@ import { MatButton } from '@angular/material/button';
 import {DatePipe, NgForOf, NgIf} from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
-import { MatDivider } from '@angular/material/divider';
+import {MatTab, MatTabGroup} from '@angular/material/tabs';
 
 @Component({
   selector: 'app-poll',
@@ -21,8 +21,9 @@ import { MatDivider } from '@angular/material/divider';
     NgForOf,
     MatCardModule,
     MatIconModule,
-    MatDivider,
-    DatePipe
+    DatePipe,
+    MatTabGroup,
+    MatTab
   ],
   templateUrl: './poll.component.html',
   styleUrls: ['./poll.component.scss'],
