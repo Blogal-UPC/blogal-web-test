@@ -1,9 +1,33 @@
-<div>
-    <h2>Escritores Seguidos</h2>
-    <ul>
-      <li *ngFor="let writer of followedWriters">
-        <p>{{ writer.name }}</p>
-        <a (click)="viewPublications(writer.name)">Ver Publicaciones</a>
-      </li>
-    </ul>
-  </div>
+<mat-toolbar style="margin-bottom: 10px">
+  <button mat-icon-button (click)="goBack()" aria-label="Botón para regresar a la página anterior">
+    <mat-icon>arrow_back</mat-icon>
+  </button>
+  <span>Seguidos</span>
+  <span class="example-spacer"></span>
+</mat-toolbar>
+<div class="book-list-container">
+  <h2>Lista de Suscripciones</h2>
+  @if(!followList||followList.length==0){
+    <p>Todavía no sigues a nadie</p>
+    <p>Puedes seguir a un suscriptor presionando el corazón en su perfil</p>
+  }
+  @else{
+    <table mat-table [dataSource]="followList" class="mat-elevation-z8">
+  
+      <ng-container matColumnDef="title">
+        <th mat-header-cell *matHeaderCellDef> Seguidos </th>
+        <td mat-cell *matCellDef="let user"> {{ user.firstName +' '+ user.lastName }} </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef> Acciones </th>
+        <td mat-cell *matCellDef="let user">
+          <button mat-button color="warn" (click)="deleteFollow(user.id)">Dejar de seguir</button>
+        </td>
+      </ng-container>
+  
+      <tr mat-header-row *matHeaderRowDef="['title','actions']"></tr>
+      <tr mat-row *matRowDef="let row; columns: ['title','actions'];"></tr>
+    </table>
+  }
+</div>

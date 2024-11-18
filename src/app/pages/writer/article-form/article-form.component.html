@@ -1,41 +1,45 @@
+<mat-toolbar style="margin-bottom: 10px">
+  <button mat-icon-button (click)="goBack()" aria-label="Botón para regresar a la página anterior">
+    <mat-icon>arrow_back</mat-icon>
+  </button>
+  <span>Publicar</span>
+  <span class="example-spacer"></span>
+</mat-toolbar>
 <div class="publication-container">
+  
   <h2>Publicación</h2>
 
-  <div class="tipo-section">
-    <h3>Restricciones de visualización</h3>
-    <mat-checkbox [(ngModel)]="solo_suscriptores">Solo visible para suscriptores</mat-checkbox>
-  </div>
+  
 
-  <!-- Textbox para coautores -->
-  <div class="coauthors-section">
-    <h3>Agregar Coautores</h3>
-    <input #coauthorInput type="text" placeholder="Nombre del coautor" />
-    <button type="button" (click)="addCoauthor(coauthorInput.value)">Agregar Coautor</button>
-    <label for="authorSelect">Selecciona un autor:</label>
-    <select id="authorSelect" (change)="onAuthorSelect($event)">
-      <option value="">Selecciona un autor</option>
-      <option *ngFor="let author of allAuthors" [value]="author">{{ author }}</option>
-    </select>
-  </div>
-
-  <!-- Lista de coautores -->
-  <ul>
-    <li *ngFor="let coauthor of coauthors">{{ coauthor }}</li>
-  </ul>
-
-  <!-- Textbox para escribir el artículo -->
-  <div class="article-section">
-    <h3>Escribir Artículo</h3>
-    <textarea [(ngModel)]="content" placeholder="Escribe tu artículo aquí..." rows="10" cols="50"></textarea>
-  </div>
-
+  
+  <form [formGroup]="articleForm">
+    <div class="form-group">
+      <mat-form-field appearance="outline" class="form-input">
+        <mat-label>Título</mat-label>
+        <input type="text" matInput placeholder="Título de tu artículo" formControlName="title"/>
+        @if(controlHasError('title','required')){
+          <mat-error>Este campo es obligatorio</mat-error>
+        }
+      </mat-form-field>  
+    </div>
+    <div class="form-group">
+      <mat-form-field appearance="outline" class="form-input">
+        <mat-label>Contenido</mat-label>
+        <textarea type="text" matInput placeholder="Contenido" formControlName="content" rows="10" cols="50"></textarea>
+        @if(controlHasError('content','required')){
+          <mat-error>Este campo es obligatorio</mat-error>
+        }
+      </mat-form-field>  
+    </div>
+    <div>
+      <mat-checkbox formControlName="forSubs">¿Solo visible para suscriptores?</mat-checkbox>
+    </div>
+  </form>
+  
   <!-- Vista previa -->
-  <div class="preview-section">
-    <h3>Vista Previa</h3>
-    <div class="preview-content">{{ content }}</div>
-  </div>
 
   <!-- Botón de publicar -->
+  
   <button type="button" (click)="publish()">Publicar</button>
 
     <!-- Importar plantillas -->

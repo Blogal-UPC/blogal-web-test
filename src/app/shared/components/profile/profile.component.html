@@ -6,7 +6,7 @@
         <span>Detalles del usuario</span>
         <span class="example-spacer"></span>
         @if(currentUser?.role==='READER'&&currentUser!==userProfile){
-            <button mat-icon-button (click)="goBack()" aria-label="Botón de corazon para seguir">
+            <button mat-icon-button (click)="follow()" aria-label="Botón de corazon para seguir">
                 <mat-icon>favorite</mat-icon>
               </button>
         }
@@ -32,7 +32,7 @@
     </div>
     
     
-    @if(currentUser?.role==='READER'&&userProfile!==currentUser){
+    @if(currentUser?.role==='READER'&&userProfile!==currentUser&&userProfile.role!=='READER'){
     <div class="input-group">
         <span class="input-group-text">PEN 20</span>
         <button mat-raised-button color="primary" class="btn-donar" (click)="subscribe()">Suscribirse</button>
