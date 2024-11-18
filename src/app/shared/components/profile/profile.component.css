@@ -1,0 +1,41 @@
+.donar-container {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .border-container {
+    border: 2px solid black;
+    border-radius: 10px;
+    padding: 10px;
+    width: 300px;
+    text-align: center;
+  }
+  
+  .donation-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .input-group {
+    display: flex;
+    align-items: center;
+  }
+  
+  .input-group .input-group-text {
+    font-weight: bold;
+    background-color: transparent;
+  }
+  
+  .input-group .form-control {
+    flex: 1; /* Hace que el input ocupe el espacio disponible */
+    border-radius: 0;
+  }
+  
+  .btn-donar {
+    border-radius: 5px;
+    margin-left: 10px;
+  }
+  .example-spacer {
+    flex: 1 1 auto;
+  }

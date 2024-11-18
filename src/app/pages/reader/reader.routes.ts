@@ -7,6 +7,8 @@ import { SaveCatalogComponent } from '../../shared/components/save-catalog/save-
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { FollowedListComponent } from './followed-list/followed-list.component';
 import {PollComponent} from './poll/poll.component';
+import { ProfileComponent } from '../../shared/components/profile/profile.component';
+import { SubscriptionsComponent } from '../../shared/components/subscriptions/subscriptions.component';
 
 
 
@@ -26,6 +28,8 @@ export const readerRoutes: Routes = [
             //path recomendaciones
             //path notificaciones
             { path:'user-profile', component: UserProfileComponent },
+            {path:'profile/:id',component:ProfileComponent},
+            {path:'subscriptions',component:SubscriptionsComponent},
         ]
     }
 ];

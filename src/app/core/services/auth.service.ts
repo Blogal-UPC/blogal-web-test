@@ -25,7 +25,7 @@ export class AuthService {
       email: 'reader@example.com',
       password: 'password123',
       role: 'READER',
-      plan: 'PRO',
+      plan: 'FREE',
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec purus ut sem malesuada ultrices. Sed nec eros ut nisi ultricies lacinia. Nullam nec purus ut sem malesuada ultrices. Sed nec eros ut nisi ultricies lacinia.'
 
     },
@@ -133,6 +133,19 @@ export class AuthService {
   public _currentUser:User | null=null;
   getcurrentUser():User|null{
     return this._currentUser;
+  }
+  getReaders():User[]|null{
+    return this.users.filter(u=>u.role==='READER');
+  }
+  getWriters():User[]|null{
+    return this.users.filter(u=>u.role==='WRITER');
+  }
+  getUserById(id:number):User|null{
+    const us=this.users.find(u=>u.id===id);
+    if(us){
+      return us;
+    }
+    return null;
   }
   register(newUser:User):User|null{
     const existingUser=this.users.find(user=>user.email===newUser.email);
