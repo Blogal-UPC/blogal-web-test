@@ -1,35 +1,32 @@
 .revenue-container {
-    padding: 20px;
-    background-color: #f9f9f9;
-  }
-  .revenue-table {
-    max-width: 800px;
-    margin: 0 auto;
-    background: white;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-  }
-  .revenue-table table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  .revenue-table th, .revenue-table td {
-    border: 1px solid #ddd;
-    padding: 10px;
-    text-align: center;
-  }
-  .revenue-table th {
-    background-color: #f4f4f4;
-  }
-  .payType {
-    font-weight: bold;
-    color: #4CAF50;
-  }
+  padding: 20px;
+  background-color: #f9f9f9;
+}
 
-.separator-row.month-separator {
-    border-bottom: 3px solid #000;
+.revenue-table {
+  max-width: 800px;
+  margin: 0 auto;
+  background: white;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
 
-  }
-  .example-spacer {
-    flex: 1 1 auto;
-  }
+.revenue-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.revenue-table th, .revenue-table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+}
+
+.revenue-table th {
+  background-color: #f4f4f4;
+}
+
+.total {
+  font-weight: bold;
+  color: #4CAF50;
+}

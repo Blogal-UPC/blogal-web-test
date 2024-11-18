@@ -23,9 +23,8 @@ export class CategoryService {
     return this.categories.find(c => c.id === id) || null;
   }
 
-  private nextId = this.categories.length + 1;
   addCategory(category: Category): Category {
-    category.id = this.nextId++;
+    category.id = this.categories.length + 1;
     this.categories.push(category);
     return category;
   }

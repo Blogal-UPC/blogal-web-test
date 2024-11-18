@@ -1,83 +1,26 @@
 @if(article){
-      <mat-toolbar style="margin-bottom: 10px">
-        <button mat-icon-button (click)="goBack()" aria-label="Botón para regresar a la página anterior">
-          <mat-icon>arrow_back</mat-icon>
-        </button>
-        <span>Detalles del artículo</span>
-        <span class="example-spacer"></span>
-        <button mat-icon-button (click)="addArticleSave(article)" aria-label="Botón de corazon para guardar artículo">
-          <mat-icon>favorite</mat-icon>
-        </button>
-      </mat-toolbar>
-      <mat-card appearance="outlined">
-        <mat-card-content>
-          <mat-card appearance="outlined" class="info-article" style="margin-bottom: 10px;">
-            <mat-card-content>
-              <div class="detail" style="margin: auto">
-                <h2 class="mat-title-large">{{ article.title }}</h2>
-                <div class="row">
-                  <div class="col-md-6">
-                    <p class="mat-body-strong"><strong>Categoría:</strong> {{ article.category.name }}</p>
-                    <p><strong>Resumen:</strong> {{ article.summary }}</p>
-  
-                    <p><strong>Etiquetas:</strong>
-                      @for(tag of tags_list; track tags_list){
-                        #{{ tag.name }}
-                      }
-                    </p>
-                    <p>
-                      <strong>Fecha de Publicación:</strong> {{ article.publicationDate | date }}
-                    </p>
-                    <p>
-                      {{articleDetail?.content}}
-                    </p>
-                  </div>
-                  <div class="col-md-6">
-                    <img src={{articleDetail?.image}} alt="img">
-                    
-                  </div>
-                </div>
-              </div>
-            </mat-card-content>
-          </mat-card>
-          <app-comments [articleId]="article.id"></app-comments>
-        </mat-card-content>
-      </mat-card>
-        <div class="row mt-5 d-flex justify-content-center">
-          <div class="col-md-6 d-flex justify-content-center">
-            <div class="donar-container mt-5 d-flex justify-content-center">
-              <div class="border-container p-3">
-                <h3 class="donation-title">Donar</h3>
-                <p>Si te ha gustado el artículo puedes apoyar al creador con una donación!</p>
-                <div class="input-group">
-                  <span class="input-group-text">PEN</span>
-                  <input 
-                    type="number" 
-                    matInput 
-                    class="form-control"  
-                    [(ngModel)]="donationValue" 
-                    placeholder="Monto"
-                    (input)="removeFrontZeros()"
-                  >
-                  <button mat-raised-button color="primary" class="btn-donar" (click)="donate()">Donar</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+    <div class="detail">
+      <h2>{{ article.title }}</h2>
+      <p><strong>Categoría:</strong> {{ article.category.name }}</p>
+      <p><strong>Resumen:</strong> {{ article.summary }}</p>
+
+      <p><strong>Etiquetas:</strong> 
+        @for(tag of tags_list; track tags_list){
+            #{{ tag.name }} 
+        }
         
-        
-        <br><br><br><br><br><br><br><br>
-      
-      }@else {
-      <div class="detail">
-        <p>Seleccione un libro para ver los detalles</p>
-      </div>
-      }
+        </p>
+      <p>
+        <strong>Fecha de Publicación:</strong> {{ article.publicationDate | date }}
+      </p>
   
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
+      <button mat-raised-button color="primary" (click)="goBack()">
+        Regresar al Catálogo
+      </button>
+    </div>
   
+    }@else {
+    <div class="detail">
+      <p>Seleccione un libro para ver los detalles</p>
+    </div>
+    }
