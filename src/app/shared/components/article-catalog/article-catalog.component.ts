@@ -122,9 +122,6 @@ export class ArticleCatalogComponent implements OnInit {
     if(this.filteredTags.length>0){
       this.filteredTags.forEach(tag_=>{
         this.filteredArticles = this.articles.filter(article=>{
-          console.log(tag_.id);
-          console.log(article.tags_id);
-
           return article.tags_id.includes(tag_.id);
         })
       })
@@ -149,5 +146,9 @@ export class ArticleCatalogComponent implements OnInit {
       this.filterArticles();
     }
     
+  }
+  onAuthorSelected(author:string){
+    this.searchQuery=`:${author}`;
+    this.filterArticles();
   }
 }
