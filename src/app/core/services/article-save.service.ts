@@ -7,7 +7,7 @@ import { Article } from '../../shared/models/article.model';
   providedIn: 'root'
 })
 export class ArticleSaveService {
-  private articleSaves: ArticleSave[] = [];
+ private articleSaves: ArticleSave[] = [];
 
   getArticleSaveByOwnerID(id: number): ArticleSave | null {
     return this.articleSaves.find(a => a.owner_id === id) || null;
