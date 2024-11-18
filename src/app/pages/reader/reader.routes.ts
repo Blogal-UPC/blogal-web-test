@@ -4,8 +4,10 @@ import { HomepageComponent } from './homepage/homepage.component'
 import { ArticleCatalogComponent } from '../../shared/components/article-catalog/article-catalog.component';
 import { ArticleDetailComponent } from '../../shared/components/article-detail/article-detail.component';
 import { SaveCatalogComponent } from '../../shared/components/save-catalog/save-catalog.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
 import { FollowedListComponent } from './followed-list/followed-list.component';
 import {PollComponent} from './poll/poll.component';
+
 
 
 export const readerRoutes: Routes = [
@@ -23,7 +25,7 @@ export const readerRoutes: Routes = [
             //path guardados
             //path recomendaciones
             //path notificaciones
-            //path configuracion
+            { path:'user-profile', component: UserProfileComponent },
         ]
     }
 ];
