@@ -24,13 +24,15 @@ export class AuthService {
       email: 'reader@example.com',
       password: 'password123',
       role: 'READER',
-      plan: 'PRO'
+      plan: 'FREE',
+      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec purus ut sem malesuada ultrices. Sed nec eros ut nisi ultricies lacinia. Nullam nec purus ut sem malesuada ultrices. Sed nec eros ut nisi ultricies lacinia.'
+
     },
     {
       id: 3,
       firstName: 'Juan',
       lastName: 'Solis',
-      email: 'writer3@example.com',
+      email: 'writer2@example.com',
       password: 'password123',
       role: 'WRITER',
       plan: 'BASIC'
@@ -39,7 +41,7 @@ export class AuthService {
       id: 4,
       firstName: 'Ana',
       lastName: 'Smith',
-      email: 'writer4@example.com',
+      email: 'writer3@example.com',
       password: 'password123',
       role: 'WRITER',
       plan: 'PRO'
@@ -48,7 +50,7 @@ export class AuthService {
       id: 5,
       firstName: 'Miguel',
       lastName: 'Poma',
-      email: 'writer5@example.com',
+      email: 'writer4@example.com',
       password: 'password123',
       role: 'WRITER',
       plan: 'ENTERPRISE'
@@ -57,7 +59,7 @@ export class AuthService {
       id: 6,
       firstName: 'Gustavo',
       lastName: 'Cruz',
-      email: 'reader6@example.com',
+      email: 'reader2@example.com',
       password: 'password123',
       role: 'READER',
       plan: 'ENTERPRISE'
@@ -66,7 +68,7 @@ export class AuthService {
       id: 7,
       firstName: 'Carlos',
       lastName: 'Ruiz',
-      email: 'reader7@example.com',
+      email: 'reader3@example.com',
       password: 'password123',
       role: 'READER',
       plan: 'BASIC'
@@ -75,7 +77,7 @@ export class AuthService {
       id: 8,
       firstName: 'Antonio',
       lastName: 'Poma',
-      email: 'writer8@example.com',
+      email: 'writer5@example.com',
       password: 'password123',
       role: 'WRITER',
       plan: 'PRO'
@@ -84,7 +86,7 @@ export class AuthService {
       id: 9,
       firstName: 'Juan',
       lastName: 'Carlos',
-      email: 'writer9@example.com',
+      email: 'writer6@example.com',
       password: 'password123',
       role: 'WRITER',
       plan: 'PRO'
@@ -93,7 +95,7 @@ export class AuthService {
       id: 10,
       firstName: 'Ricardo',
       lastName: 'Ricardo',
-      email: 'writer10@example.com',
+      email: 'writer7@example.com',
       password: 'password123',
       role: 'WRITER',
       plan: 'PRO'
@@ -102,7 +104,7 @@ export class AuthService {
       id: 11,
       firstName: 'Hugo',
       lastName: 'Puertas',
-      email: 'writer11@example.com',
+      email: 'writer8@example.com',
       password: 'password123',
       role: 'WRITER',
       plan: 'PRO'
@@ -112,6 +114,19 @@ export class AuthService {
   private _currentUser:User | null=null;
   getcurrentUser():User|null{
     return this._currentUser;
+  }
+  getReaders():User[]|null{
+    return this.users.filter(u=>u.role==='READER');
+  }
+  getWriters():User[]|null{
+    return this.users.filter(u=>u.role==='WRITER');
+  }
+  getUserById(id:number):User|null{
+    const us=this.users.find(u=>u.id===id);
+    if(us){
+      return us;
+    }
+    return null;
   }
   register(newUser:User):User|null{
     const existingUser=this.users.find(user=>user.email===newUser.email);
