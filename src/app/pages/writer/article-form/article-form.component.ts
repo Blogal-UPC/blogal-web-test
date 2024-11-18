@@ -128,6 +128,7 @@ export class ArticleFormComponent implements OnInit{
       }
       this.articleService.addArticle(newArticle,newArticleDetail); 
       this.showSnackBar('Se ha creado la publicación ' + newArticle.title);
+      this.articleForm.reset();
     }
     else{
       this.showSnackBar('Faltan elementos en tu artículo');

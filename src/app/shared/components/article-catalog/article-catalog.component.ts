@@ -104,6 +104,9 @@ export class ArticleCatalogComponent implements OnInit {
       if(this.subscriptions?.receptor_id.find(id=>id===a.author_id)){
         return true;
       }
+      if(a.author_id===this.currentUser?.id){
+        return true;
+      }
       return false;
     })
     this.articles = allowedArticles;
