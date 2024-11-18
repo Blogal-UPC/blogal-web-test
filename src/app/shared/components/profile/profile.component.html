@@ -5,26 +5,34 @@
         </button>
         <span>Detalles del usuario</span>
         <span class="example-spacer"></span>
-        @if(userProfile!=currentUser){
+        @if(currentUser?.role==='READER'&&currentUser!==userProfile){
             <button mat-icon-button (click)="goBack()" aria-label="Botón de corazon para seguir">
                 <mat-icon>favorite</mat-icon>
               </button>
         }
     </mat-toolbar>
+    
     <div class="user-profile">
         <h1>{{ userName }}</h1>
         <p>{{ userDescription }}</p>
-        <button (click)="editDescription()">Editar Descripción</button>
+        @if (userProfile===currentUser) {
+            <button (click)="editDescription()">Editar Descripción</button>
+        }
         <p>Publicaciones guardadas: {{ savedPublicationsCount }}</p>
-        </div>
-          
-        <!-- Modal para editar la descripción -->
-        <div id="editDescriptionModal">
+    </div>
+        
+    <!-- Modal para editar la descripción -->
+    
+    <div id="editDescriptionModal">
         <label for="userDescription">Descripción del Usuario:</label>
         <textarea id="userDescription" [(ngModel)]="userDescription"></textarea>
+        @if (userProfile===currentUser) {
         <button (click)="saveDescription()">Guardar</button>
+        }
     </div>
-    @if(userProfile!=currentUser){
+    
+    
+    @if(currentUser?.role==='READER'&&userProfile!==currentUser){
     <div class="input-group">
         <span class="input-group-text">PEN 20</span>
         <button mat-raised-button color="primary" class="btn-donar" (click)="subscribe()">Suscribirse</button>
