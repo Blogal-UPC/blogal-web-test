@@ -11,7 +11,6 @@ import { ProfileComponent } from '../../shared/components/profile/profile.compon
 import { SubscriptionsComponent } from '../../shared/components/subscriptions/subscriptions.component';
 
 
-
 export const readerRoutes: Routes = [
     {
         path:'',
@@ -23,11 +22,7 @@ export const readerRoutes: Routes = [
             {path:'saved',component:SaveCatalogComponent},
             {path: 'followed', component:FollowedListComponent},
             {path: 'notifications', component: PollComponent},
-            //path seguidos
-            //path guardados
-            //path recomendaciones
-            //path notificaciones
-            { path:'user-profile', component: UserProfileComponent },
+            {path:'user-profile', component: UserProfileComponent },
             {path:'profile/:id',component:ProfileComponent},
             {path:'subscriptions',component:SubscriptionsComponent},
         ]

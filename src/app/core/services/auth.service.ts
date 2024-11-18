@@ -15,8 +15,7 @@ export class AuthService {
       email: 'writer@example.com',
       password: 'password123',
       role: 'WRITER',
-      plan: 'ENTERPRISE',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec purus ut sem malesuada ultrices. Sed nec eros ut nisi ultricies lacinia. Nullam nec purus ut sem malesuada ultrices. Sed nec eros ut nisi ultricies lacinia.'
+      plan: 'ENTERPRISE'
     },
     {
       id: 2,
@@ -36,9 +35,7 @@ export class AuthService {
       email: 'writer2@example.com',
       password: 'password123',
       role: 'WRITER',
-      plan: 'BASIC',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec purus ut sem malesuada ultrices. Sed nec eros ut nisi ultricies lacinia. Nullam nec purus ut sem malesuada ultrices. Sed nec eros ut nisi ultricies lacinia.'
-
+      plan: 'BASIC'
     },
     {
       id: 4,
@@ -47,9 +44,7 @@ export class AuthService {
       email: 'writer3@example.com',
       password: 'password123',
       role: 'WRITER',
-      plan: 'PRO',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec purus ut sem malesuada ultrices. Sed nec eros ut nisi ultricies lacinia. Nullam nec purus ut sem malesuada ultrices. Sed nec eros ut nisi ultricies lacinia.'
-
+      plan: 'PRO'
     },
     {
       id: 5,
@@ -58,9 +53,7 @@ export class AuthService {
       email: 'writer4@example.com',
       password: 'password123',
       role: 'WRITER',
-      plan: 'ENTERPRISE',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec purus ut sem malesuada ultrices. Sed nec eros ut nisi ultricies lacinia. Nullam nec purus ut sem malesuada ultrices. Sed nec eros ut nisi ultricies lacinia.'
-
+      plan: 'ENTERPRISE'
     },
     {
       id: 6,
@@ -69,9 +62,7 @@ export class AuthService {
       email: 'reader2@example.com',
       password: 'password123',
       role: 'READER',
-      plan: 'ENTERPRISE',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec purus ut sem malesuada ultrices. Sed nec eros ut nisi ultricies lacinia. Nullam nec purus ut sem malesuada ultrices. Sed nec eros ut nisi ultricies lacinia.'
-
+      plan: 'ENTERPRISE'
     },
     {
       id: 7,
@@ -80,9 +71,7 @@ export class AuthService {
       email: 'reader3@example.com',
       password: 'password123',
       role: 'READER',
-      plan: 'BASIC',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec purus ut sem malesuada ultrices. Sed nec eros ut nisi ultricies lacinia. Nullam nec purus ut sem malesuada ultrices. Sed nec eros ut nisi ultricies lacinia.'
-
+      plan: 'BASIC'
     },
     {
       id: 8,
@@ -91,9 +80,7 @@ export class AuthService {
       email: 'writer5@example.com',
       password: 'password123',
       role: 'WRITER',
-      plan: 'PRO',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec purus ut sem malesuada ultrices. Sed nec eros ut nisi ultricies lacinia. Nullam nec purus ut sem malesuada ultrices. Sed nec eros ut nisi ultricies lacinia.'
-
+      plan: 'PRO'
     },
     {
       id: 9,
@@ -102,9 +89,7 @@ export class AuthService {
       email: 'writer6@example.com',
       password: 'password123',
       role: 'WRITER',
-      plan: 'PRO',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec purus ut sem malesuada ultrices. Sed nec eros ut nisi ultricies lacinia. Nullam nec purus ut sem malesuada ultrices. Sed nec eros ut nisi ultricies lacinia.'
-
+      plan: 'PRO'
     },
     {
       id: 10,
@@ -113,9 +98,7 @@ export class AuthService {
       email: 'writer7@example.com',
       password: 'password123',
       role: 'WRITER',
-      plan: 'PRO',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec purus ut sem malesuada ultrices. Sed nec eros ut nisi ultricies lacinia. Nullam nec purus ut sem malesuada ultrices. Sed nec eros ut nisi ultricies lacinia.'
-
+      plan: 'PRO'
     },
     {
       id: 11,
@@ -124,13 +107,11 @@ export class AuthService {
       email: 'writer8@example.com',
       password: 'password123',
       role: 'WRITER',
-      plan: 'PRO',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec purus ut sem malesuada ultrices. Sed nec eros ut nisi ultricies lacinia. Nullam nec purus ut sem malesuada ultrices. Sed nec eros ut nisi ultricies lacinia.'
-
+      plan: 'PRO'
     },
   ];
   constructor() { }
-  public _currentUser:User | null=null;
+  private _currentUser:User | null=null;
   getcurrentUser():User|null{
     return this._currentUser;
   }
@@ -175,5 +156,4 @@ export class AuthService {
     this._currentUser=null;
     console.log('Sesion cerrada');
   }
-  
 }

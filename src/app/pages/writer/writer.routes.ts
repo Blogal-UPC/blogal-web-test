@@ -13,6 +13,7 @@ import { SubscriptionsComponent } from '../../shared/components/subscriptions/su
 
 
 
+
 export const writerRoutes: Routes=[
     {
         path:'',
@@ -27,6 +28,7 @@ export const writerRoutes: Routes=[
 
             {path:'saved',component:SaveCatalogComponent},
             {path:'revenue',component:RevenueComponent},
+            {path:'notifications',component:NotificationsComponent}
 
             {path:'notifications',component:NotificationsComponent},
             {path:'subscriptions',component:SubscriptionsComponent},

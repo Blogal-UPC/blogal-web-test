@@ -9,7 +9,6 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButton, MatButtonModule, MatIconButton } from '@angular/material/button';
 
-
 @Component({
   selector: 'app-revenue',
   standalone: true,
@@ -18,7 +17,6 @@ import { MatButton, MatButtonModule, MatIconButton } from '@angular/material/but
   styleUrl: './revenue.component.css'
 })
 export class RevenueComponent {
-
   private revenueService=inject(RevenueService);
   private authService=inject(AuthService);
 
