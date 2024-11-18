@@ -27,11 +27,12 @@
         </div>
   
         <!-- Estadísticas -->
+        @if(userProfile === currentUser) {
         <div class="profile-box stats-box">
           <h3>Estadísticas</h3>
           <p>Publicaciones guardadas: {{ savedPublicationsCount }}</p>
         </div>
-  
+        }   
         <!-- Modal para editar descripción -->
         <div *ngIf="editingDescription" id="editDescriptionModal" class="modal-box">
           <h3>Editar Descripción</h3>
