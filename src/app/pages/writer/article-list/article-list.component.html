@@ -1,0 +1,41 @@
+<div class="article-list-container">
+    <br><br>
+    <h2>Lista de Artículos</h2>
+  
+  
+    <mat-form-field class="search-bar" appearance="outline">
+      <mat-label>Buscar artículos</mat-label>
+      <input matInput [(ngModel)]="searchQuery" (ngModelChange)="filterArticles()" placeholder="Busca por título o categoría">
+    </mat-form-field>
+  
+    
+    <table mat-table [dataSource]="filteredArticles" class="mat-elevation-z8">
+  
+      <ng-container matColumnDef="title">
+        <th mat-header-cell *matHeaderCellDef> Título </th>
+        <td mat-cell *matCellDef="let article"> {{ article.title }} </td>
+      </ng-container>
+  
+  
+      <ng-container matColumnDef="category">
+        <th mat-header-cell *matHeaderCellDef> Categoría </th>
+        <td mat-cell *matCellDef="let article"> {{ article.category.name }} </td>
+      </ng-container>
+  
+  
+      <ng-container matColumnDef="publicationDate">
+        <th mat-header-cell *matHeaderCellDef> Fecha de Publicación </th>
+        <td mat-cell *matCellDef="let article"> {{ article.publicationDate | date }} </td>
+      </ng-container>
+  
+  
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef> Autor </th>
+        <td mat-cell *matCellDef="let article"> {{ article.author }} </td>
+      </ng-container>
+  
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+  

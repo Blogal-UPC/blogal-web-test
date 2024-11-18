@@ -1,4 +1,4 @@
-import { AsyncPipe, CommonModule, Location } from '@angular/common';
+import { AsyncPipe, CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ArticleCardComponent } from '../article-card/article-card.component';
@@ -18,9 +18,6 @@ import { ArticleSaveService } from '../../../core/services/article-save.service'
 import { ArticleSave } from '../../models/article-save.model';
 import { AuthService } from '../../../core/services/auth.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatIconModule } from '@angular/material/icon';
-import { MatIconButton } from '@angular/material/button';
 
 @Component({
   selector: 'app-save-catalog',
@@ -36,10 +33,7 @@ import { MatIconButton } from '@angular/material/button';
     MatFormFieldModule,
     MatAutocompleteModule,
     ReactiveFormsModule,
-    AsyncPipe,
-    MatToolbarModule,
-    MatIconModule,
-    MatIconButton,
+    AsyncPipe
   ],
   templateUrl: './save-catalog.component.html',
   styleUrl: './save-catalog.component.css'
@@ -54,7 +48,7 @@ export class SaveCatalogComponent {
   private articleSaveService = inject(ArticleSaveService);
   private authService=inject(AuthService);
   private snackBar=inject(MatSnackBar);
-  private location = inject(Location);
+
 
   ngOnInit(): void {
     this.filteredArticles=[];
@@ -80,9 +74,7 @@ export class SaveCatalogComponent {
       }
     }
   }
-  goBack(): void {
-    this.location.back();
-  }
+  
   showSnackBar(message:string) {
     this.snackBar.open(message,'Cerrar',{
       duration:3000,
