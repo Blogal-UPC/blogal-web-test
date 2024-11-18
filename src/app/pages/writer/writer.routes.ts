@@ -2,8 +2,6 @@ import { Routes } from '@angular/router'
 import { WriterLayoutComponent } from './writer-layout/writer-layout.component'
 
 import { ArticleFormComponent } from './article-form/article-form.component'
-import { CategoryListComponent } from './category-list/category-list.component'
-import { CategoryFormComponent } from './category-form/category-form.component'
 import { HomepageComponent } from './homepage/homepage.component'
 import { ArticleCatalogComponent } from '../../shared/components/article-catalog/article-catalog.component'
 import { ArticleDetailComponent } from '../../shared/components/article-detail/article-detail.component'
@@ -26,10 +24,6 @@ export const writerRoutes: Routes=[
 
             {path:'articles/add', component:ArticleFormComponent},
             {path:'articles/edit/:id', component:ArticleFormComponent},
-
-            {path:'categories', component:CategoryListComponent},
-            {path:'categproes/add', component:CategoryFormComponent},
-            {path:'categories/edit/:id', component:CategoryFormComponent},
 
             {path:'saved',component:SaveCatalogComponent},
             {path:'revenue',component:RevenueComponent},

@@ -184,8 +184,8 @@ export class ArticleService {
     },
     {
       id: 10,
-      author_id: 2,
-      author: 'Jane Smith',
+      author_id: 5,
+      author: 'Miguel Poma',
       title: 'Las maravillas del océano',
       category: {
         id: 2,
@@ -290,7 +290,7 @@ export class ArticleService {
     {
       id:12,
       content:'HOLA A TODOS MIS SUSCRIPTORES',
-      image:['assets/article_placeholder']
+      image:["assets/article_placeholder.png"]
     },
   ]
   constructor() {}
@@ -298,7 +298,7 @@ export class ArticleService {
   private nextId = this.article.length + 1;
   
   addArticleDetail(articleDetail: ArticleDetail): ArticleDetail {
-    articleDetail.id = this.nextId++;
+    
     this.articleDetail.push(articleDetail);
     return articleDetail;
   }
@@ -313,9 +313,11 @@ export class ArticleService {
   getArticleDetailById(id:number){
     return this.articleDetail.find(a => a.id === id) ?? null;
   }
-  addArticle(article: Article): Article {
+  addArticle(article: Article,articleDetail:ArticleDetail): Article {
     article.id = this.nextId++;
+    articleDetail.id=article.id;
     this.article.push(article);
+    this.articleDetail.push(articleDetail);
     return article;
   }
 

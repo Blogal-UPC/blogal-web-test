@@ -79,6 +79,7 @@ export class ArticleCatalogComponent implements OnInit {
         this.filterArticles();
       }
     });
+    
   }
   
   private _filter(value: string): string[] {
@@ -100,7 +101,7 @@ export class ArticleCatalogComponent implements OnInit {
       if(this.currentUser?.plan==='PRO'||this.currentUser?.plan==='ENTERPRISE'){
         return true
       }
-      if(this.subscriptions?.receptor_id.find(a=>a===this.currentUser?.id)){
+      if(this.subscriptions?.receptor_id.find(id=>id===a.author_id)){
         return true;
       }
       return false;

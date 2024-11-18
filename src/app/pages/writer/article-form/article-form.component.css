@@ -10,7 +10,7 @@
     background-color: #f9f9f9;
   }
   
-  .coauthors-section, .article-section, .preview-section, .templates-section, .tipo-section {
+  .coauthors-section, .article-section, .preview-section, .templates-section, .tipo-section, .form-group{
     width: 100%;
     margin-bottom: 20px;
   }
@@ -43,4 +43,7 @@
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
+  }
+  .example-spacer {
+    flex: 1 1 auto;
   }

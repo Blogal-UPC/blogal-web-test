@@ -1,16 +1,19 @@
-import { CommonModule } from '@angular/common';
+import { CommonModule, Location } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { RevenueService } from '../../../core/services/revenue.service';
 import { AuthService } from '../../../core/services/auth.service';
 import { Payment } from '../../../shared/models/payment.model';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import {Chart} from 'chart.js/auto';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButton, MatButtonModule, MatIconButton } from '@angular/material/button';
 
 
 @Component({
   selector: 'app-revenue',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule,MatToolbarModule,MatIconModule,MatButtonModule,MatIconButton],
   templateUrl: './revenue.component.html',
   styleUrl: './revenue.component.css'
 })
@@ -20,7 +23,7 @@ export class RevenueComponent {
   private authService=inject(AuthService);
 
   private currentUser=this.authService.getcurrentUser();
-
+  private location = inject(Location);
   payments:Payment[]=[];
   private snackBar = inject(MatSnackBar);
   totalPayment = 0;
@@ -38,6 +41,9 @@ export class RevenueComponent {
     this.payments.forEach(p=>this.totalPayment+=p.amount);
     this.chart();
     
+  }
+  goBack(): void {
+    this.location.back();
   }
   showSnackBar(message:string) {
     this.snackBar.open(message,'Cerrar',{

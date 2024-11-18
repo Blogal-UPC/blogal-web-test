@@ -1,3 +1,10 @@
+<mat-toolbar style="margin-bottom: 10px">
+  <button mat-icon-button (click)="goBack()" aria-label="Botón para regresar a la página anterior">
+    <mat-icon>arrow_back</mat-icon>
+  </button>
+  <span>Suscripciones</span>
+  <span class="example-spacer"></span>
+</mat-toolbar>
 <div class="book-list-container">
     <h2>Lista de Suscripciones</h2>
     @if(!subsList||subsList.length==0){

@@ -30,3 +30,6 @@
     border-bottom: 3px solid #000;
 
   }
+  .example-spacer {
+    flex: 1 1 auto;
+  }

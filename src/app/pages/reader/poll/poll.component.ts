@@ -1,13 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { Poll, PollOption } from '../../../shared/models/poll.model';
 import {PollService} from '../../../core/services/poll.service';
 import { MatListOption, MatSelectionList } from '@angular/material/list';
 import { MatProgressBar } from '@angular/material/progress-bar';
-import { MatButton } from '@angular/material/button';
-import {DatePipe, NgForOf, NgIf} from '@angular/common';
+import { MatButton, MatButtonModule, MatIconButton } from '@angular/material/button';
+import {DatePipe, Location, NgForOf, NgIf} from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
-import { MatIconModule } from '@angular/material/icon';
+import { MatIcon, MatIconModule } from '@angular/material/icon';
 import {MatTab, MatTabGroup} from '@angular/material/tabs';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 @Component({
   selector: 'app-poll',
@@ -23,7 +24,11 @@ import {MatTab, MatTabGroup} from '@angular/material/tabs';
     MatIconModule,
     DatePipe,
     MatTabGroup,
-    MatTab
+    MatTab,
+    MatToolbarModule,
+    MatIconModule,
+    MatButtonModule,
+    MatIconButton,
   ],
   templateUrl: './poll.component.html',
   styleUrls: ['./poll.component.scss'],
@@ -32,13 +37,15 @@ export class PollComponent implements OnInit {
   polls: Poll[] = [];
   selectedOptions: { [pollId: number]: PollOption | null } = {};
   hasVoted: { [pollId: number]: boolean } = {};
-
+  private location = inject(Location);
   constructor(private pollService: PollService) {}
 
   ngOnInit(): void {
     this.loadPolls();
   }
-
+  goBack(): void {
+    this.location.back();
+  }
   loadPolls(): void {
     this.polls = this.pollService.getPolls();
   }

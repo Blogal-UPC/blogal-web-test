@@ -1,8 +1,17 @@
+<mat-toolbar style="margin-bottom: 10px">
+  <button mat-icon-button (click)="goBack()" aria-label="Botón para regresar a la página anterior">
+    <mat-icon>arrow_back</mat-icon>
+  </button>
+  <span>Ingresos</span>
+  <span class="example-spacer"></span>
+</mat-toolbar>
 <div class="revenue-container">
+  <br><br>
+  <h2>Gráfico de ingresos del año</h2>
     <canvas id="paymentChart"></canvas>
     
         <div class="revenue-table">
-            <h2>Panel de Ingresos Mensuales</h2>
+            <h2>Resumen de Ingresos Mensuales</h2>
             <table>
               <thead>
                 <tr>
