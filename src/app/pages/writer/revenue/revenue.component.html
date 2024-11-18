@@ -1,1 +1,45 @@
-<p>revenue works!</p>
+<div class="revenue-container">
+    <canvas id="paymentChart"></canvas>
+    
+        <div class="revenue-table">
+            <h2>Panel de Ingresos Mensuales</h2>
+            <table>
+              <thead>
+                <tr>
+                  <th>Mes</th>
+                  <th>Cantidad</th>
+                  <th>Tipo</th>
+                </tr>
+              </thead>
+              <tbody>
+                @for(payment of payments; track payment.id) {
+                  <tr *ngIf="payment === payments[0] || payment.creationDate.getMonth() !== payments[payments.indexOf(payment) - 1].creationDate.getMonth()" 
+                      class="separator-row month-separator">   
+                  </tr>
+                  <tr>
+                    <td>{{ payment.creationDate.getMonth() + 1 }}</td>
+                    <td>PEN {{ payment.amount }}</td>
+                    <td class="payType">{{ payment.type }}</td>
+                  </tr>
+                }
+                @empty {
+                  <p>Aún no ha recibido un pago</p>
+                }
+              </tbody>
+            </table>
+            <table *ngIf="payments.length>0">
+              <thead>
+                <tr>
+                    <th>Total</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                    <td>PEN {{totalPayment}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <br><br><br><br><br><br>
+  </div>
+

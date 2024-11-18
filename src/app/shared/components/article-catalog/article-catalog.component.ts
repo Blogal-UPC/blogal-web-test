@@ -1,5 +1,5 @@
 import { AsyncPipe, CommonModule } from '@angular/common';
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ArticleCardComponent } from '../article-card/article-card.component';
 import { ArticleService } from '../../../core/services/article.services';
@@ -14,6 +14,7 @@ import { Tag } from '../../models/tag.model';
 import { TagService } from '../../../core/services/tag.services';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatAutocomplete, MatAutocompleteModule } from '@angular/material/autocomplete';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-article-catalog',
@@ -34,7 +35,7 @@ import { MatAutocomplete, MatAutocompleteModule } from '@angular/material/autoco
   templateUrl: './article-catalog.component.html',
   styleUrl: './article-catalog.component.css'
 })
-export class ArticleCatalogComponent {
+export class ArticleCatalogComponent implements OnInit {
   articles: Article[] = [];
   filteredArticles: Article[] = [];
   searchQuery: string = '';
@@ -46,6 +47,8 @@ export class ArticleCatalogComponent {
   private articleService = inject(ArticleService);
   private categoryService = inject(CategoryService);
   private tagService = inject(TagService);
+
+  constructor(private route: ActivatedRoute) {}
 
   myControl=new FormControl('');
   options:string[]=[];
@@ -61,6 +64,12 @@ export class ArticleCatalogComponent {
       startWith(''),
       map(value=>this._filter(value||'')),
     )
+    this.route.queryParams.subscribe(params => {
+      if (params['searchQuery']) {
+        this.searchQuery = params['searchQuery'];
+        this.filterArticles();
+      }
+    });
   }
   
   private _filter(value: string): string[] {
@@ -113,9 +122,6 @@ export class ArticleCatalogComponent {
     if(this.filteredTags.length>0){
       this.filteredTags.forEach(tag_=>{
         this.filteredArticles = this.articles.filter(article=>{
-          console.log(tag_.id);
-          console.log(article.tags_id);
-
           return article.tags_id.includes(tag_.id);
         })
       })
@@ -140,5 +146,9 @@ export class ArticleCatalogComponent {
       this.filterArticles();
     }
     
+  }
+  onAuthorSelected(author:string){
+    this.searchQuery=`:${author}`;
+    this.filterArticles();
   }
 }
