@@ -1,0 +1,46 @@
+<div class="book-list-container">
+    <h2>Lista de Suscripciones</h2>
+  
+  
+    <mat-form-field class="search-bar" appearance="outline">
+      <mat-label>Buscar suscripciones</mat-label>
+      <!--<input matInput [(ngModel)]="searchQuery" (ngModelChange)="filterBooks()" placeholder="Busca por título o categoría">-->
+    </mat-form-field>
+  
+    <div class="action-buttons">
+      <!--<button mat-raised-button color="primary" (click)="goToAddBook()">Agregar Nuevo Libro</button>-->
+    </div>
+  
+    <table mat-table [dataSource]="subsList.receptor_id" class="mat-elevation-z8">
+  
+      <ng-container matColumnDef="title">
+        <th mat-header-cell *matHeaderCellDef> Suscripciones </th>
+        <td mat-cell *matCellDef="let receptor_id"> {{ receptor_id }} </td>
+      </ng-container>
+  
+  
+      <ng-container matColumnDef="category">
+        <th mat-header-cell *matHeaderCellDef> Cantidad </th>
+        <td mat-cell > {{ 20 }} </td>
+      </ng-container>
+  
+  
+      <ng-container matColumnDef="price">
+        <th mat-header-cell *matHeaderCellDef> Precio </th>
+        <td mat-cell *matCellDef="let book"> {{ book.price | currency }} </td>
+      </ng-container>
+  
+  
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef> Acciones </th>
+        <td mat-cell *matCellDef="let receptor_id">
+          <!--<button mat-button color="accent" (click)="editBook(book.id)">Editar</button>-->
+          <button mat-button color="warn" (click)="deleteSubscription(receptor_id)">Eliminar</button>
+        </td>
+      </ng-container>
+  
+      <tr mat-header-row *matHeaderRowDef=""></tr>
+      <tr mat-row *matRowDef="let row; columns: ['precio'];"></tr>
+    </table>
+  </div>
+  

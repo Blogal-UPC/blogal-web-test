@@ -12,6 +12,8 @@ import { AuthService } from '../../../core/services/auth.service';
 export class NavbarWriterComponent {
   private authService =inject(AuthService);
   private router=inject(Router);
+  
+  id = this.authService._currentUser?.id;
 
   constructor() {}
 

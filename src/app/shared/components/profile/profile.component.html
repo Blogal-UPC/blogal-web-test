@@ -1,0 +1,38 @@
+@if(userProfile){
+    <mat-toolbar style="margin-bottom: 10px">
+        <button mat-icon-button (click)="goBack()" aria-label="Botón para regresar a la página anterior">
+          <mat-icon>arrow_back</mat-icon>
+        </button>
+        <span>Detalles del usuario</span>
+        <span class="example-spacer"></span>
+        @if(userProfile!=currentUser){
+            <button mat-icon-button (click)="goBack()" aria-label="Botón de corazon para seguir">
+                <mat-icon>favorite</mat-icon>
+              </button>
+        }
+    </mat-toolbar>
+    <div class="user-profile">
+        <h1>{{ userName }}</h1>
+        <p>{{ userDescription }}</p>
+        <button (click)="editDescription()">Editar Descripción</button>
+        <p>Publicaciones guardadas: {{ savedPublicationsCount }}</p>
+        </div>
+          
+        <!-- Modal para editar la descripción -->
+        <div id="editDescriptionModal">
+        <label for="userDescription">Descripción del Usuario:</label>
+        <textarea id="userDescription" [(ngModel)]="userDescription"></textarea>
+        <button (click)="saveDescription()">Guardar</button>
+    </div>
+    @if(userProfile!=currentUser){
+    <div class="input-group">
+        <span class="input-group-text">PEN 20</span>
+        <button mat-raised-button color="primary" class="btn-donar" (click)="subscribe()">Suscribirse</button>
+      </div>
+    }
+}
+@else{
+    <div>
+        <p>No se encuentra el usuario</p>
+    </div>
+}

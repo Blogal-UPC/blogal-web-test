@@ -18,19 +18,19 @@
             <a class="nav-link" routerLink="/reader/catalog" routerLinkActive="active">Buscar</a>
           </li>
           <li class="nav-item">
+            <a class="nav-link" routerLink="/reader/subscriptions" routerLinkActive="active">Suscripciones</a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link" routerLink="/reader/followed" routerLinkActive="active">Seguidos</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" routerLink="/reader/saved" routerLinkActive="active">Guardados</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLink="/reader/recomendations" routerLinkActive="Ingresos">Recomendaciones</a>
-          </li>
-          <li class="nav-item">
             <a class="nav-link" routerLink="/reader/notifications" routerLinkActive="active">Notificaciones</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLink="/reader/user-profile" routerLinkActive="active">Perfil del Usuario</a>
+            <a class="nav-link" [routerLink]="['/reader/profile/',id]">Perfil</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" color="warn" (click)="logout()">Logout</a>

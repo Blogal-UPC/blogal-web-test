@@ -7,6 +7,7 @@ export interface Article {
   author: string;
   title: string;
   category: Category;
+  type:'FREE'|'SUBS'
   tags_id: number[];
   publicationDate: Date;
   summary: string;

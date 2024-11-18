@@ -15,6 +15,8 @@ import { TagService } from '../../../core/services/tag.services';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatAutocomplete, MatAutocompleteModule } from '@angular/material/autocomplete';
 import { ActivatedRoute } from '@angular/router';
+import { AuthService } from '../../../core/services/auth.service';
+import { SubscribeService } from '../../../core/services/subscribe.service';
 
 @Component({
   selector: 'app-article-catalog',
@@ -47,6 +49,12 @@ export class ArticleCatalogComponent implements OnInit {
   private articleService = inject(ArticleService);
   private categoryService = inject(CategoryService);
   private tagService = inject(TagService);
+  private authService=inject(AuthService);
+  private subscriptionService=inject(SubscribeService);
+
+
+  private currentUser=this.authService.getcurrentUser();
+  private subscriptions=this.subscriptionService.getSubEmitterById(this.currentUser!.id);
 
   constructor(private route: ActivatedRoute) {}
 
@@ -57,6 +65,7 @@ export class ArticleCatalogComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadArticles();
+    this.filterArticlesBySubscription();
     this.tagService.getTags().forEach(tag=>{
       this.options.push('#'+tag.name);
     });
@@ -83,7 +92,22 @@ export class ArticleCatalogComponent implements OnInit {
     this.categories = this.categoryService.getCategories();
     this.filteredArticles = [...this.articles];
   }
-
+  filterArticlesBySubscription(){
+    const allowedArticles=this.articles.filter(a=>{
+      if(a.type==='FREE'){
+        return true
+      }
+      if(this.currentUser?.plan==='PRO'||this.currentUser?.plan==='ENTERPRISE'){
+        return true
+      }
+      if(this.subscriptions?.receptor_id.find(a=>a===this.currentUser?.id)){
+        return true;
+      }
+      return false;
+    })
+    this.articles = allowedArticles;
+    this.filteredArticles = allowedArticles;
+  }
   filterArticles(): void {
     
     if (this.searchQuery.startsWith('#')){

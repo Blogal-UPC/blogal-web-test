@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router'
 import { WriterLayoutComponent } from './writer-layout/writer-layout.component'
-import { ArticleListComponent } from './article-list/article-list.component'
+
 import { ArticleFormComponent } from './article-form/article-form.component'
 import { CategoryListComponent } from './category-list/category-list.component'
 import { CategoryFormComponent } from './category-form/category-form.component'
@@ -10,6 +10,8 @@ import { ArticleDetailComponent } from '../../shared/components/article-detail/a
 import { SaveCatalogComponent } from '../../shared/components/save-catalog/save-catalog.component'
 import { RevenueComponent } from './revenue/revenue.component'
 import { NotificationsComponent } from './notifications/notifications.component'
+import { ProfileComponent } from '../../shared/components/profile/profile.component'
+import { SubscriptionsComponent } from '../../shared/components/subscriptions/subscriptions.component'
 
 
 
@@ -32,9 +34,12 @@ export const writerRoutes: Routes=[
             {path:'saved',component:SaveCatalogComponent},
             {path:'revenue',component:RevenueComponent},
 
-            {path:'notifications',component:NotificationsComponent}
+            {path:'notifications',component:NotificationsComponent},
+            {path:'subscriptions',component:SubscriptionsComponent},
 
-
+            
+            {path:'profile/:id',component:ProfileComponent},
+            
         ]
     }
 ]

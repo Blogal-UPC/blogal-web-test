@@ -17,6 +17,7 @@ export class ArticleService {
             name: 'Meteorología',
             description: 'Estudios y análisis relacionados con el clima y sus fenómenos',
         },
+        type:'FREE',
         tags_id: [7, 17],
         publicationDate: new Date('2023-03-05'),
         summary: 'Un análisis de cómo el cambio climático afecta los patrones de precipitación a nivel mundial.',
@@ -63,6 +64,7 @@ export class ArticleService {
             name: 'Meteorología',
             description: 'Estudios y análisis relacionados con el clima y sus fenómenos',
         },
+        type:'FREE',
         tags_id: [17, 15],
         publicationDate: new Date('2023-06-12'),
         summary: 'Explora cómo los cambios climáticos afectan la migración de animales en diversas regiones.',
@@ -78,6 +80,7 @@ export class ArticleService {
           name: 'Botánica',
           description: 'Categoría para temas relacionados a plantas y sus adaptaciones en diferentes ambientes',
       },
+      type:'FREE',
       tags_id: [16, 24],
       publicationDate: new Date('2023-02-21'),
       summary: 'Cómo las plantas del desierto sobreviven en condiciones extremas de calor y sequía.',
@@ -93,6 +96,7 @@ export class ArticleService {
             name: 'Botánica',
             description: 'Categoría para temas relacionados a plantas y sus adaptaciones en diferentes ambientes',
         },
+        type:'FREE',
         tags_id: [23, 11],
         publicationDate: new Date('2023-05-18'),
         summary: 'Exploración de la variedad de orquídeas y su importancia ecológica en los bosques tropicales.',
@@ -108,6 +112,7 @@ export class ArticleService {
           name: 'Meteorología',
           description: 'Artículos sobre el cambio climático y sus efectos en los ecosistemas.',
       },
+      type:'FREE',
       tags_id: [7, 21],
       publicationDate: new Date('2022-11-23'),
       summary: 'Estudio sobre cómo el deshielo de glaciares contribuye al aumento del nivel del mar y sus consecuencias.',
@@ -123,6 +128,7 @@ export class ArticleService {
           name: 'Meteorología',
           description: 'Artículos sobre el cambio climático y sus efectos en los ecosistemas.',
       },
+      type:'FREE',
       tags_id: [3, 17],
       publicationDate: new Date('2023-02-12'),
       summary: 'Análisis de cómo el cambio climático intensifica los fenómenos meteorológicos extremos.',
@@ -138,6 +144,7 @@ export class ArticleService {
           name: 'Zoología',
           description: 'Estudios y descubrimientos sobre la vida animal y sus adaptaciones.',
       },
+      type:'FREE',
       tags_id: [15, 16],
       publicationDate: new Date('2023-05-30'),
       summary: 'Investigación sobre cómo los animales nocturnos sobreviven en climas extremos del desierto.',
@@ -153,6 +160,7 @@ export class ArticleService {
           name: 'Zoología',
           description: 'Estudios y descubrimientos sobre la vida animal y sus adaptaciones.',
       },
+      type:'FREE',
       tags_id: [10, 17],
       publicationDate: new Date('2023-07-05'),
       summary: 'Una exploración de las rutas migratorias de las ballenas y sus amenazas actuales.',
@@ -168,6 +176,7 @@ export class ArticleService {
         name:'Biología',
         description: 'Artículos de Biología',
       },
+      type:'FREE',
       tags_id:[2],
       publicationDate: new Date('2018-10-01'),
       summary:'Historia de la evolución de las tortugas',
@@ -183,6 +192,7 @@ export class ArticleService {
         name: 'Ecología',
         description: 'Libros sobre Ecología',
       },
+      type:'FREE',
       tags_id: [3],
       publicationDate: new Date('2019-05-15'),
       summary: 'Explora la biodiversidad y secretos del océano',
@@ -198,9 +208,26 @@ export class ArticleService {
         name: 'Astronomía',
         description: 'Usa esta categoría para temas relacionados con el espacio y astronomía',
       },
+      type:'FREE',
       tags_id: [4],
       publicationDate: new Date('2020-07-21'),
       summary: 'Conoce los principios básicos de la astronomía',
+      comments: []
+    },
+    {
+      id: 12,
+      author_id: 1,
+      author: 'John Doe',
+      title: 'Artículo especial de agradecimiento para mis Suscriptores',
+      category: {
+        id: 3,
+        name: 'Astronomía',
+        description: 'Usa esta categoría para temas relacionados con el espacio y astronomía',
+      },
+      type:'SUBS',
+      tags_id: [1],
+      publicationDate: new Date('2020-07-21'),
+      summary: 'Gracias a todos mis suscriptores',
       comments: []
     },
   ];
@@ -259,7 +286,12 @@ export class ArticleService {
       id: 11,
       content: "La astronomía es una ciencia fascinante que nos permite explorar el universo y comprender fenómenos como las estrellas, planetas y galaxias. Este artículo introduce los conceptos básicos de la astronomía, desde la estructura del sistema solar hasta las herramientas modernas para estudiar el cosmos. Además, ofrece una perspectiva sobre cómo los avances en astronomía han expandido nuestro conocimiento sobre el origen del universo y nuestro lugar en él, inspirando a nuevas generaciones de científicos y exploradores del espacio.",
       image: ["assets/article_placeholder.png"]
-    }
+    },
+    {
+      id:12,
+      content:'HOLA A TODOS MIS SUSCRIPTORES',
+      image:['assets/article_placeholder']
+    },
   ]
   constructor() {}
 

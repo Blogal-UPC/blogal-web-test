@@ -7,7 +7,7 @@
         </mat-card-header>
         <mat-card-content>
           <p class="article-summary">{{ article.summary }}</p>
-          <button class="article-author" (click)="onAuthorSelect(article.author)">Autor: {{ article.author }}</button>
+          <button class="article-author" [routerLink]="['../profile', article.author_id]">Autor: {{ article.author }}</button>
           <p class="article-publication">Publicado en: {{ article.publicationDate | date }}</p>
         </mat-card-content>
         <mat-card-actions>
